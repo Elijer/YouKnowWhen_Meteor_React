@@ -9,7 +9,7 @@ import ResolutionSingle from './ResolutionSingle.jsx';
 
 Resolutions = new Mongo.Collection("resolutions");
 
-export default class App extends TrackerReact(React.Component) {
+export default class ResolutionsWrapper extends TrackerReact(React.Component) {
 
   resolutions(){
     return Resolutions.find().fetch();

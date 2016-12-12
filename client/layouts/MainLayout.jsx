@@ -2,7 +2,16 @@ import React from 'react';
 
 export const MainLayout = ({content}) => (
   <div className="main-layout">
-    {content}
+    <header>
+      <h2>My Resolutions</h2>
+      <nav>
+        <a href="/">Resolutions</a>
+        <a href="/about">Resolutions</a>
+      </nav>
+    </header>
+    <main>
+      {content}
+    </main>
   </div>
 )
 //creating constant variable with a name of MainLayout amd passing in some content.
