@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 //imports everything from the node_modules/react folder and the node_modules/react-dom folder
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ResolutionsForm from './ResolutionsForm.jsx';
+import ResolutionSingle from './ResolutionSingle.jsx';
 
 //import ResolutionsForm from './ResolutionsForms.jsx';
 
@@ -26,9 +27,9 @@ export default class App extends TrackerReact(React.Component) {
       <div>
         <h1>My Resolutions</h1>
         <ResolutionsForm />
-        <div>
-          {res[0].text}
-        </div>
+        <ul>
+          <ResolutionSingle resolution={res[6]} />
+        </ul>
       </div>
     )
     //whenever you use brackets like this inside of jsx it's to say "this is javascript"
