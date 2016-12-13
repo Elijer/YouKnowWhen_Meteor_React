@@ -14,6 +14,9 @@ export const MainLayout = ({content}) => (
     <main>
       {content}
     </main>
+    <footer>
+      Mark Slauter 2016
+    </footer>
   </div>
 )
 //creating constant variable with a name of MainLayout amd passing in some content.

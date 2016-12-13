@@ -19,7 +19,7 @@ export default class ResolutionsForm extends Component {
         <h3> You know you're a &nbsp;
         <input type="text"
           ref="resolution"
-          placeholder="Redneck" />
+          placeholder="Web designer" />
         &nbsp; when...</h3>
       </form>
     )

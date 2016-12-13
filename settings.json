@@ -1,0 +1,8 @@
+{
+  "galaxy.meteor.com": {
+     "env": {
+       "ROOT_URL": "http://youknowwhen.meteorapp.com",
+       "MONGO_URL": "mongodb://YouKnowWhen:asparagus14@ds133428.mlab.com:33428/youknowwhen1"
+     }
+   }
+}
