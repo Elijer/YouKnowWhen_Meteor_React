@@ -1,1 +1,1 @@
-Resolutions = new Mongo.Collection("resolutions");
+Resolutions = new Mongo.Collection("resolutions");  
