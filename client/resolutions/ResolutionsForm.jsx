@@ -16,9 +16,11 @@ export default class ResolutionsForm extends Component {
   render(){
     return (
       <form className="new-resolution" onSubmit={this.addResolution.bind(this)}>
+        <h3> You know you're a &nbsp;
         <input type="text"
           ref="resolution"
-          placeholder="Finish React Meteor Series" />
+          placeholder="Redneck" />
+        &nbsp; when...</h3>
       </form>
     )
   }

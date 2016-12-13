@@ -75,7 +75,7 @@ html
 
 body
     background light-grey
-    padding: 70px 0 150px
+    padding: 120px 0 150px
     font-family: 'Open Sans', sans-serif
 
 header
@@ -84,7 +84,7 @@ header
     padding 20px 5%
     fixed top left
     width 100%
-    height 70px
+    height 150px
     z-index: z.header
     shadow-level(2)
     clearfix()
@@ -98,10 +98,12 @@ header
         a
             color: #FFF
             text-decoration: none
-            line-height: 36px
-            font-size: 1.2em
+            line-height: 40px
+            padding-top: 1.4em
+            font-size: 2.3em
             display: inline-block
             border-bottom 4px solid transparent
+            padding-right 40px
             trans()
             + a
                 margin-left: 30px
@@ -112,6 +114,7 @@ header
 p
     color #333
 
+//.logo
 .page-title
     text-transform uppercase
     font-weight 800
@@ -211,6 +214,7 @@ input::-moz-placeholder
 input:-ms-input-placeholder
     color: #ddd
 
+/*
 .new-resolution
     transition all 0.3s cubic-bezier(0.86, 0, 0.07, 1)
     shadow-level(3)
@@ -223,17 +227,18 @@ input:-ms-input-placeholder
         color #FFF
         font-size 1.2em
         padding 10px
-        display block
-        text-align center
+        display inline
+        //text-align center
         letter-spacing 2px
     input
         width 100%
         margin 0
-        font-size 2em
+        font-size 1em
         font-weight 800
         color #333
         border none
-        padding 30px
+        padding 20px
+        */
 
 .resolutions
     list-style none

@@ -34,8 +34,7 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
 
     return(
       <div>
-        <h1>My Resolutions</h1>
-        <ResolutionsForm />
+        <h1> <ResolutionsForm /> </h1>
         <ul className="resolutions">
           {this.resolutions().map( (resolution)=>{
             return <ResolutionSingle key={resolution._id} resolution={resolution} />
