@@ -13,6 +13,7 @@ export default class ResolutionSingle extends Component {
   render(){
     return (
       <li>
+
         <input type="checkbox"
           readOnly={true}
           checked={this.props.resolution.complete}
