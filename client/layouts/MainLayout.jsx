@@ -3,7 +3,7 @@ import React from 'react';
 export const MainLayout = ({content}) => (
   <div className="main-layout">
     <header>
-      <h2><img class="logo" src="YouKnow.jpg"/></h2>
+      <h2><img src="YouKnow_Spiffy_Medium.png"/></h2>
       <nav>
         <a href="/">Home</a>
         <a href="/forIllustrators">For Illustrators</a>
