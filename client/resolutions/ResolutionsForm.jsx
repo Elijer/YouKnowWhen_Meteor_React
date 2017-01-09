@@ -18,9 +18,13 @@ export default class ResolutionsForm extends Component {
       <form className="new-resolution" onSubmit={this.addResolution.bind(this)}>
         <h3> You know you're a &nbsp;
         <input type="text"
-          ref="resolution"
+          ref=""
           placeholder="Web designer" />
-        &nbsp; when...</h3>
+        &nbsp; when &nbsp;
+        <input type="text"
+          ref="resolution"
+          placeholder="..." />
+      </h3>
       </form>
     )
   }
