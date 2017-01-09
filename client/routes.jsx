@@ -8,6 +8,6 @@ FlowRouter.route('/', {
   action() {
     mount(MainLayout, {
         content: (<ResolutionsWrapper />)
-    })
+    });
   }
 });
