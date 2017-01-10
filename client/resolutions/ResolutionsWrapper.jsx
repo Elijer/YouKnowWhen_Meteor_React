@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 //imports everything from the node_modules/react folder and the node_modules/react-dom folder
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import CategoryForm from './CategoryForm.jsx';
+import PhraseForm from './PhraseForm.jsx';
 import PhraseSingle from './PhraseSingle.jsx';
 
 //import ResolutionsForm from './ResolutionsForms.jsx';
@@ -31,10 +32,29 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
   //this.addResolution
 
   render(){
+    let userPrompt;
+    if (Session.get("currentCategory")){
+      userPrompt = (
+        <h1> You know you're a &nbsp;
+          <CategoryForm />
+          when...
+          <PhraseForm />
+        </h1>
+      )
+    }
+    else {
+      userPrompt = (
+        <div>
+        <h1> You know you're a &nbsp; <CategoryForm /> </h1>
+        <p3> (Please type in a category to begin.) </p3>
+        </div>
+      )
+    }
+
 
     return(
       <div>
-        <h1> <CategoryForm /> </h1>
+        {userPrompt}
         <ul className="resolutions">
           {this.resolutions().map( (resolution)=>{
             return <PhraseSingle key={resolution._id} resolution={resolution} />
