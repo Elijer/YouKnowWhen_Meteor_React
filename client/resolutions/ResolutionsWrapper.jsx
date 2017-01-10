@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDom from 'react-dom';
 //imports everything from the node_modules/react folder and the node_modules/react-dom folder
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import ResolutionsForm from './ResolutionsForm.jsx';
-import ResolutionSingle from './ResolutionSingle.jsx';
+import CategoryForm from './CategoryForm.jsx';
+import PhraseSingle from './PhraseSingle.jsx';
 
 //import ResolutionsForm from './ResolutionsForms.jsx';
 
@@ -34,10 +34,10 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
 
     return(
       <div>
-        <h1> <ResolutionsForm /> </h1>
+        <h1> <CategoryForm /> </h1>
         <ul className="resolutions">
           {this.resolutions().map( (resolution)=>{
-            return <ResolutionSingle key={resolution._id} resolution={resolution} />
+            return <PhraseSingle key={resolution._id} resolution={resolution} />
           })}
 
         </ul>

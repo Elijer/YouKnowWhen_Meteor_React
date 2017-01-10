@@ -1,0 +1,15 @@
+
+
+    let phraseInputActivated;
+    if (this.refs.phraseActivated.value = "yes"){
+      phraseInputActivated = (
+        <h1>activated</h1>
+      )
+    }
+    else {
+      phraseInputActivated = (
+        <h1> not yet activated </h1>
+      )
+    }
+
+              {phraseInputActivated}
