@@ -13,5 +13,11 @@ Meteor.methods({
   },
   deleteResolution(id){
     Resolutions.remove(id)
+  },
+  addCategory(categoryName){
+    Categories.insert({
+      text: categoryName,
+      createdAt: new Date()
+    })
   }
 });

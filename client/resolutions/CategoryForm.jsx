@@ -3,16 +3,6 @@ import ReactDom from 'react-dom';
 
 export default class CategoryForm extends Component {
 
-  addResolution(event){
-    event.preventDefault();
-    var text = this.refs.resolution.value.trim();
-
-    Meteor.call('addResolution', text, ()=>{
-      this.refs.resolution.value = "";
-    });
-    //this.refs.resolution.value = "";
-  }
-
   selectCategory(event){
     event.preventDefault();
     var text = this.refs.currentCategory.value.trim();
@@ -20,6 +10,7 @@ export default class CategoryForm extends Component {
 
     console.log(Session.get("currentCategory"));
     console.log(this);
+    Modal.show("categoryModal");
   }
 
   render(){
@@ -31,8 +22,7 @@ export default class CategoryForm extends Component {
               ref="currentCategory"
               placeholder="Web designer" />
             </form>
-
-          </div>
+        </div>
         )
     }
 }

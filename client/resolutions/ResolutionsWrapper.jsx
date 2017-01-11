@@ -9,6 +9,7 @@ import PhraseSingle from './PhraseSingle.jsx';
 //import ResolutionsForm from './ResolutionsForms.jsx';
 
 Resolutions = new Mongo.Collection("resolutions");
+Categories = new Mongo.Collection("categories");
 
 export default class ResolutionsWrapper extends TrackerReact(React.Component) {
   constructor(){
@@ -16,7 +17,8 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
 
     this.state = {
       subscription: {
-        resolutions: Meteor.subscribe("allResolutions")
+        resolutions: Meteor.subscribe("allResolutions"),
+        resolutions: Meteor.subscribe("allCategories")
       }
     }
   }

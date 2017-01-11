@@ -1,0 +1,36 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You Know When</title>
+  <link rel="icon" sizes="32x32" href="/favicon.png">
+</head>
+
+<body>
+  {{> test}}
+</body>
+
+<template name="test">
+</template>
+
+
+<template name="categoryModal">
+      <div class="modal fade">
+          <div class="modal-dialog">
+              <div class="modal-content">
+
+                  <div class="modal-header">
+                      <h4 class="modal-title">Create New Category</h4>
+                  </div>
+
+                  <div class="modal-body">
+                      <p>"{{currentCategory}}" is not yet a category. Would you like to create it as a new category? </p>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="acceptCategory" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+</template>
