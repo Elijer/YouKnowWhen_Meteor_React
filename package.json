@@ -2,7 +2,8 @@
   "name": "reacttest",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "deploy": "DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy youknowwhen.meteorapp.com --settings settings.json"
   },
   "dependencies": {
     "babel-runtime": "^6.18.0",
@@ -16,5 +17,6 @@
   "main": "index.js",
   "devDependencies": {},
   "author": "Elijah Kennedy",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": []
 }
