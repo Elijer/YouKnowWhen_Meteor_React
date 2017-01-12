@@ -72,13 +72,17 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
       else {
         //console.log("none")
         results = (
-          <p1> Oops! Nobody seems to have made any phrases for this category. Type one in to be the first! </p1>
+          <span className = "label label-info">
+            <p1> Oops! Nobody seems to have made any phrases for this category. Type one in to be the first! </p1>
+          </span>
         )
       }
     }
     else {
       results = (
+        <span className="label label-default">
         <p1>(Please type in a category to begin.)</p1>
+        </span>
       )
     }
 
