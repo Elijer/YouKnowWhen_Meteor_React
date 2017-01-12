@@ -27,8 +27,8 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
     this.state.subscription.resolutions.stop();
   }
 
-  resolutions(){
-    return Resolutions.find().fetch();
+  resolutions(searchKey){
+    return Resolutions.find(searchKey).fetch();
   }
 
   categories(){
@@ -62,7 +62,7 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
       <div>
         {userPrompt}
         <ul className="resolutions">
-          {this.resolutions().map( (resolution)=>{
+          {this.resolutions({currentCategory: Session.get("currentCategory")}).map( (resolution)=>{
             return <PhraseSingle key={resolution._id} resolution={resolution} />
           })}
 
