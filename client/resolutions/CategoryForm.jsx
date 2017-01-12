@@ -7,14 +7,15 @@ export default class CategoryForm extends Component {
     event.preventDefault();
     var text = this.refs.currentCategory.value.trim();
     Session.set("currentCategory", text);
-
-    console.log(Session.get("currentCategory"));
-    console.log(this);
+    var dbText = Categories.findOne({text: text});
+    //Modal.show("categoryModal");
+    //console.log(dbText===text);
+    if (!dbText){
     Modal.show("categoryModal");
+    }
   }
 
   render(){
-
     return (
         <div>
             <form className="select-category" onSubmit={this.selectCategory.bind(this)}>
