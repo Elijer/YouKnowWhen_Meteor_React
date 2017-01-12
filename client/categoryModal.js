@@ -13,6 +13,7 @@ Template.categoryModal.helpers({
 Template.categoryModal.events({
   'click #acceptCategory': function(){
     //return console.log("modal success!");
+    //console.log(Session.get("currentCategory"));
     return Meteor.call("addCategory", Session.get("currentCategory"));
   }
 })

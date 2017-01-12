@@ -1,7 +1,8 @@
 Meteor.methods({
-  addResolution(resolution) {
+  addResolution(resolution, categoryName) {
     Resolutions.insert({
       text: resolution,
+      currentCategory: categoryName,
       complete: false,
       createdAt: new Date()
     });

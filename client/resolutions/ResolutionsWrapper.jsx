@@ -30,6 +30,10 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
   resolutions(){
     return Resolutions.find().fetch();
   }
+
+  categories(){
+    return Categories.find().fetch();
+  }
   //while inside this App class, this addResolution function can no be referred to as
   //this.addResolution
 

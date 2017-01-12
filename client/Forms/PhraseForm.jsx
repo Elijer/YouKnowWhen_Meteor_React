@@ -6,8 +6,10 @@ export default class PhraseForm extends Component {
   addResolution(event){
     event.preventDefault();
     var text = this.refs.newPhrase.value.trim();
-
-    Meteor.call('addResolution', text, Session.get("currentCategory"));
+;
+    Meteor.call('addResolution', text, Session.get("currentCategory"), ()=>{
+      //this.refs.newPhrase.value = "";
+    });
     //this.refs.resolution.value = "";
   }
 
