@@ -15,5 +15,8 @@ Template.categoryModal.events({
     //return console.log("modal success!");
     //console.log(Session.get("currentCategory"));
     return Meteor.call("addCategory", Session.get("currentCategory"));
+  },
+  'click #cancelCategory': function(){
+    Session.set("currentCategory", "");
   }
 })
