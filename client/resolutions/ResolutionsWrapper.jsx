@@ -6,8 +6,6 @@ import CategoryForm from './CategoryForm.jsx';
 import PhraseForm from './PhraseForm.jsx';
 import PhraseSingle from './PhraseSingle.jsx';
 
-//import ResolutionsForm from './ResolutionsForms.jsx';
-
 Resolutions = new Mongo.Collection("resolutions");
 Categories = new Mongo.Collection("categories");
 
@@ -41,8 +39,7 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
     let userPrompt;
     if (Session.get("currentCategory")){
       userPrompt = (
-        <span> You know you're a &nbsp;
-          <CategoryForm />
+        <span>
           when...
           <PhraseForm />
         </span>
@@ -50,7 +47,7 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
     }
     else {
       userPrompt = (
-        <div> You know you're a &nbsp; <CategoryForm /> </div>
+        <div></div>
       )
     }
 
@@ -85,10 +82,9 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
       )
     }
 
-
     return(
       <div className="category-phrase-dashboard">
-        <h1>{userPrompt}</h1>
+        <h1>You know you're a &nbsp; <CategoryForm /> {userPrompt}</h1>
         {results}
       </div>
     )
