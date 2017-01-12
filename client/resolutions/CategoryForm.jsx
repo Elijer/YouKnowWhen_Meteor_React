@@ -15,10 +15,16 @@ export default class CategoryForm extends Component {
     }
   }
 
+  blurTest(event){
+    console.log("blurred");
+  }
+
   render(){
     return (
         <div>
-            <form className="select-category" onSubmit={this.selectCategory.bind(this)}>
+            <form className="select-category"
+              onSubmit={this.selectCategory.bind(this)}
+              onBlur={this.selectCategory.bind(this)}>
             <input type="text"
               ref="currentCategory"
               placeholder="Web designer" />

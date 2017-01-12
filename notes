@@ -1,6 +1,25 @@
 to do
 
-make it so that,
+1. make it so that,
 when you do the create new category modal,
 the input box doesn't "" itself.
 Not sure why this happens actually. Maybe there's no 'preventDefault' for some reason?
+
+2. make 2nd field clear when category change happens
+
+3. when you leave 1st input, enter automatically? Or prompt the user somehow?
+Michelle typed in 'unicorn' without pressing enter and it got added to 'koala'
+
+4. make sure category calidation is caps-blind and gets rid of extra space.
+
+5. input box is strangely too small a target to easily hit
+
+
+
+
+Do the most
+1. I would love to do two-way data binding, or implement whatever would be necessary
+for results to show up as you typed in the first input form, rather than only afters
+submit.
+
+2. change "a" to "an" depending
