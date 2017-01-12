@@ -1,0 +1,6 @@
+to do
+
+make it so that,
+when you do the create new category modal,
+the input box doesn't "" itself.
+Not sure why this happens actually. Maybe there's no 'preventDefault' for some reason?

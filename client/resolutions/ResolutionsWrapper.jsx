@@ -52,21 +52,41 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
       userPrompt = (
         <div>
         <h1> You know you're a &nbsp; <CategoryForm /> </h1>
-        <p3> (Please type in a category to begin.) </p3>
         </div>
+      )
+    }
+
+    let phraseResultCount = Resolutions.find({currentCategory: Session.get("currentCategory")}).count();
+    //console.log(Resolutions.find({currentCategory: Session.get("currentCategory")}).count());
+    if (Session.get("currentCategory")){
+      if (phraseResultCount>=1){
+        //console.log("one or more");
+        results = (
+          <ul className="resolutions">
+            {this.resolutions({currentCategory: Session.get("currentCategory")}).map( (resolution)=>{
+              return <PhraseSingle key={resolution._id} resolution={resolution} />
+            })}
+          </ul>
+        )
+      }
+      else {
+        //console.log("none")
+        results = (
+          <p1> Oops! Nobody seems to have made any phrases for this category. Type one in to be the first! </p1>
+        )
+      }
+    }
+    else {
+      results = (
+        <p1>(Please type in a category to begin.)</p1>
       )
     }
 
 
     return(
-      <div>
+      <div className="category-phrase-dashboard">
         {userPrompt}
-        <ul className="resolutions">
-          {this.resolutions({currentCategory: Session.get("currentCategory")}).map( (resolution)=>{
-            return <PhraseSingle key={resolution._id} resolution={resolution} />
-          })}
-
-        </ul>
+        {results}
       </div>
     )
     //whenever you use brackets like this inside of jsx it's to say "this is javascript"
