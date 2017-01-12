@@ -41,18 +41,16 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
     let userPrompt;
     if (Session.get("currentCategory")){
       userPrompt = (
-        <h1> You know you're a &nbsp;
+        <span> You know you're a &nbsp;
           <CategoryForm />
           when...
           <PhraseForm />
-        </h1>
+        </span>
       )
     }
     else {
       userPrompt = (
-        <div>
-        <h1> You know you're a &nbsp; <CategoryForm /> </h1>
-        </div>
+        <div> You know you're a &nbsp; <CategoryForm /> </div>
       )
     }
 
@@ -72,15 +70,16 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
       else {
         //console.log("none")
         results = (
-          <span className = "label label-info">
+          <span className = "label label-default">
             <p1> Oops! Nobody seems to have made any phrases for this category. Type one in to be the first! </p1>
           </span>
+          //http://getbootstrap.com/components/
         )
       }
     }
     else {
       results = (
-        <span className="label label-default">
+        <span className="label label-info">
         <p1>(Please type in a category to begin.)</p1>
         </span>
       )
@@ -89,7 +88,7 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
 
     return(
       <div className="category-phrase-dashboard">
-        {userPrompt}
+        <h1>{userPrompt}</h1>
         {results}
       </div>
     )
