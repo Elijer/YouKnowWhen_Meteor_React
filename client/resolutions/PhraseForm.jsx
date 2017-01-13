@@ -16,7 +16,9 @@ export default class PhraseForm extends Component {
           <form className="new-phrase" onSubmit={this.addResolution.bind(this)}>
             <input type="text"
               ref="newPhrase"
-              placeholder="add new phrase" />
+              placeholder="add new phrase"
+              maxLength="45"
+              />
           </form>
         </span>
       )

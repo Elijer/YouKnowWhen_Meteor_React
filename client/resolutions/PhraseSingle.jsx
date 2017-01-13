@@ -12,20 +12,21 @@ export default class PhraseSingle extends Component {
 
   render(){
     return (
-      <li>
-
-        <input type="checkbox"
-          readOnly={true}
-          checked={this.props.resolution.complete}
-          onClick={this.toggleChecked.bind(this)} />
-
-        {this.props.resolution.text}
-
-        <button className="btn-cancel"
-          onClick={this.deleteResolution.bind(this)}>
-          &times;
-        </button>
-      </li>
+      <div className="tiles">
+          <li>
+            {/*
+            <input type="checkbox"
+              readOnly={true}
+              checked={this.props.resolution.complete}
+              onClick={this.toggleChecked.bind(this)} />
+              */}
+              <button className="btn-cancel"
+                onClick={this.deleteResolution.bind(this)}>
+                &times;
+              </button>
+            {this.props.resolution.text}
+          </li>
+      </div>
     )
   }
 }

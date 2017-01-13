@@ -21,7 +21,6 @@ export default class CategoryForm extends Component {
 
   render(){
     return (
-        <div>
             <form className="select-category"
               onSubmit={this.selectCategory.bind(this)}
               onBlur={this.selectCategory.bind(this)}>
@@ -29,7 +28,6 @@ export default class CategoryForm extends Component {
               ref="currentCategory"
               placeholder="Web designer" />
             </form>
-        </div>
         )
     }
 }

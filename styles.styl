@@ -78,6 +78,7 @@ body
     background light-grey
     padding: 120px 0 150px
     font-family: 'Open Sans', sans-serif
+
 footer
   color #FFF
   background: #D8D8D8
@@ -132,6 +133,11 @@ header
 p
     color #333
 
+ul
+  padding 5px 5px 5px 5px
+.tiles
+  float left
+
 //.logo
 .page-title
     text-transform uppercase
@@ -148,13 +154,17 @@ p
         lost-center 70%
         margin-top 40px
 
+//Why do .tiles and .test1 do things just by being there? Parenting probably.
+.tiles
+//.test1
+
 .btn, button
     display inline-block
     cursor pointer
     background purp
     color #FFF
     text-decoration none
-    text-transform uppercase
+    //text-transform uppercase
     padding 5px 15px
     border solid 3px purp
     border-radius 2px
@@ -264,17 +274,19 @@ input:-ms-input-placeholder
 .resolutions
     list-style none
     padding 0
-    margin 40px 0
+    margin 20px 0
     lost-center 700px
     li
+        //background red
         font-size 2em
-        margin-bottom 8px
+        margin-bottom 0px
+        height 100px
         input
             margin-right 10px
         &.checked
             color #CCC
         button
-            padding 10px
+            padding 8px
             margin-left 40px
             line-height 0.5
             float right
@@ -295,8 +307,9 @@ input:-ms-input-placeholder
     ul
         margin 0
         padding 0
-        display flex
-        justify-content space-between
+        float left
+        //display flex
+        //justify-content space-between
         list-style none
     a
         color #FFF
