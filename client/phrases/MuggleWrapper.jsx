@@ -9,7 +9,7 @@ import PhraseSingle from './PhraseSingle.jsx';
 Phrases = new Mongo.Collection("phrases");
 Categories = new Mongo.Collection("categories");
 
-export default class PhrasesWrapper extends TrackerReact(React.Component) {
+export default class MuggleWrapper extends TrackerReact(React.Component) {
   constructor(){
     super();
 
