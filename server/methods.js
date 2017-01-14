@@ -1,5 +1,5 @@
 Meteor.methods({
-  addResolution(resolution, categoryName) {
+  addPhrase(resolution, categoryName) {
     Resolutions.insert({
       text: resolution,
       currentCategory: categoryName,
