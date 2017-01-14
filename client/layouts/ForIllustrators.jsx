@@ -15,7 +15,7 @@ export const MainLayout = ({content}) => (
       {content}
     </main>
     <footer>
-      Elijah Kennedy 2017
+      Mark Slauter 2016
     </footer>
   </div>
 )

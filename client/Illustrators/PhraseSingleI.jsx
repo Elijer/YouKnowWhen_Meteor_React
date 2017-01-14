@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class PhraseSingle extends Component {
+export default class PhraseSingleI extends Component {
 
   toggleChecked(){
     Meteor.call('togglePhrase', this.props.phrase._id, this.props.phrase.complete);
