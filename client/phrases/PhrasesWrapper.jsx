@@ -6,34 +6,34 @@ import CategoryForm from './CategoryForm.jsx';
 import PhraseForm from './PhraseForm.jsx';
 import PhraseSingle from './PhraseSingle.jsx';
 
-Resolutions = new Mongo.Collection("resolutions");
+Phrases = new Mongo.Collection("phrases");
 Categories = new Mongo.Collection("categories");
 
-export default class ResolutionsWrapper extends TrackerReact(React.Component) {
+export default class PhrasesWrapper extends TrackerReact(React.Component) {
   constructor(){
     super();
 
     this.state = {
       subscription: {
-        resolutions: Meteor.subscribe("allResolutions"),
-        resolutions: Meteor.subscribe("allCategories")
+        phrases: Meteor.subscribe("allPhrases"),
+        phrases: Meteor.subscribe("allCategories")
       }
     }
   }
 
   componentWillUnMount(){
-    this.state.subscription.resolutions.stop();
+    this.state.subscription.phrases.stop();
   }
 
-  resolutions(searchKey){
-    return Resolutions.find(searchKey).fetch();
+  phrases(searchKey){
+    return Phrases.find(searchKey).fetch();
   }
 
   categories(){
     return Categories.find().fetch();
   }
-  //while inside this App class, this addResolution function can no be referred to as
-  //this.addResolution
+  //while inside this App class, this addPhrase function can no be referred to as
+  //this.addPhrase
 
   render(){
     let userPrompt;
@@ -51,15 +51,15 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
       )
     }
 
-    let phraseResultCount = Resolutions.find({currentCategory: Session.get("currentCategory")}).count();
-    //console.log(Resolutions.find({currentCategory: Session.get("currentCategory")}).count());
+    let phraseResultCount = Phrases.find({currentCategory: Session.get("currentCategory")}).count();
+    //console.log(Phrases.find({currentCategory: Session.get("currentCategory")}).count());
     if (Session.get("currentCategory")){
       if (phraseResultCount>=1){
         //console.log("one or more");
         results = (
-          <ul className="resolutions">
-            {this.resolutions({currentCategory: Session.get("currentCategory")}).map( (resolution)=>{
-              return <PhraseSingle key={resolution._id} resolution={resolution} />
+          <ul className="phrases">
+            {this.phrases({currentCategory: Session.get("currentCategory")}).map( (phrase)=>{
+              return <PhraseSingle key={phrase._id} phrase={phrase} />
             })}
           </ul>
         )

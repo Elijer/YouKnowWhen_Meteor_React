@@ -3,11 +3,11 @@ import React, {Component} from 'react';
 export default class PhraseSingle extends Component {
 
   toggleChecked(){
-    Meteor.call('toggleResolution', this.props.resolution._id, this.props.resolution.complete);
+    Meteor.call('togglePhrase', this.props.phrase._id, this.props.phrase.complete);
   }
 
-  deleteResolution(){
-    Meteor.call('deleteResolution', this.props.resolution._id);
+  deletePhrase(){
+    Meteor.call('deletePhrase', this.props.phrase._id);
   }
 
   render(){
@@ -17,14 +17,14 @@ export default class PhraseSingle extends Component {
             {/*
             <input type="checkbox"
               readOnly={true}
-              checked={this.props.resolution.complete}
+              checked={this.props.phrase.complete}
               onClick={this.toggleChecked.bind(this)} />
               */}
               <button className="btn-cancel"
-                onClick={this.deleteResolution.bind(this)}>
+                onClick={this.deletePhrase.bind(this)}>
                 &times;
               </button>
-            {this.props.resolution.text}
+            {this.props.phrase.text}
           </li>
       </div>
     )

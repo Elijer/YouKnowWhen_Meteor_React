@@ -1,19 +1,19 @@
 Meteor.methods({
-  addPhrase(resolution, categoryName) {
-    Resolutions.insert({
-      text: resolution,
+  addPhrase(phrase, categoryName) {
+    Phrases.insert({
+      text: phrase,
       currentCategory: categoryName,
       complete: false,
       createdAt: new Date()
     });
   },
-  toggleResolution(id, status){
-    Resolutions.update(id, {
+  togglePhrase(id, status){
+    Phrases.update(id, {
       $set: {complete: !status}
     });
   },
-  deleteResolution(id){
-    Resolutions.remove(id)
+  deletePhrase(id){
+    Phrases.remove(id)
   },
   addCategory(categoryName){
     Categories.insert({

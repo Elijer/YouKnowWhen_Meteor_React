@@ -1,10 +1,10 @@
-Resolutions = new Mongo.Collection("resolutions");
+Phrases = new Mongo.Collection("phrases");
 Categories = new Mongo.Collection("categories");
 
-Meteor.publish("allResolutions", function(){
-  return Resolutions.find();
-  //return Resolutions.find({complete:false});
-  //return Resolutions.find({complete:true});
+Meteor.publish("allPhrases", function(){
+  return Phrases.find();
+  //return Phrases.find({complete:false});
+  //return Phrases.find({complete:true});
   //^Publish the data you want
 });
 
