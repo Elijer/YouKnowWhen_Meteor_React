@@ -1,3 +1,10 @@
+essential
+1. autocomplete
+2. good grid styling
+3. image upload
+4. page routing
+
+
 to do
 
 1. make it so that,
@@ -14,6 +21,14 @@ Michelle typed in 'unicorn' without pressing enter and it got added to 'koala'
 
 5. input box is strangely too small a target to easily hit
 
+6. cannot submit empty ""
+
+7. make sure phrase is new, not repeat --- especially, no repeats in DATABASE. right now I have a lot of "moose"'s.
+
+8. nav-bar words highlight blue no bueno
+
+9.
+
 
 
 
@@ -23,3 +38,20 @@ for results to show up as you typed in the first input form, rather than only af
 submit.
 
 2. change "a" to "an" depending
+
+3. thesaurus searching --- suggest similar words
+
+4. finding similar phrases across categories. "This phrase is used in categories x y and z" (show links to categories).
+
+5. autocomplete phrase input (ideally this could be done WITH thesaurus)
+
+6. email subscribe to certain categories
+
+7. voting arena on homepage
+
+8. Redirect to correct domain
+
+
+User Testing
+1. Reach out to Michelle and a couple illustrators about how this dashboard concept looks to them
+2. test it out with every iteration.
