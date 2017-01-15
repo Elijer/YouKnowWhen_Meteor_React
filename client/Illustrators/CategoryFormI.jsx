@@ -26,7 +26,7 @@ export default class CategoryFormI extends Component {
               onBlur={this.selectCategory.bind(this)}>
             <input type="text"
               ref="currentCategory"
-              placeholder="Web designer" />
+              placeholder="Illustrator" />
             </form>
         )
     }

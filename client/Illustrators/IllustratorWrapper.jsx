@@ -42,7 +42,7 @@ export default class IllustratorWrapper extends TrackerReact(React.Component) {
       userPrompt = (
         <span>
           when...
-          <PhraseForm />
+          <PhraseFormI />
         </span>
       )
     }
@@ -60,7 +60,7 @@ export default class IllustratorWrapper extends TrackerReact(React.Component) {
         results = (
           <ul className="phrases">
             {this.phrases({currentCategory: Session.get("currentCategory")}).map( (phrase)=>{
-              return <PhraseSingle key={phrase._id} phrase={phrase} />
+              return <PhraseSingleI key={phrase._id} phrase={phrase} />
             })}
           </ul>
         )
@@ -85,7 +85,7 @@ export default class IllustratorWrapper extends TrackerReact(React.Component) {
 
     return(
       <div className="category-phrase-dashboard">
-        <h1>You know you're a &nbsp; <CategoryForm /> {userPrompt}</h1>
+        <h1>You know you're a/an &nbsp; <CategoryFormI /> {userPrompt}</h1>
         {results}
       </div>
     )
