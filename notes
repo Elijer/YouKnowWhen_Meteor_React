@@ -4,6 +4,35 @@ essential
 3. image upload
 4. page routing
 
+styling ideas
+  LOOK 1
+    Get rid of input background for category.
+    Center it.
+    give it a fancy cursor
+    8tracks style bubble suggestions with slightly varying hue
+    that can be clicked or arrow-keyed through.
+    sound design for clicking (with processing maybe?)
+
+  Look Q
+    animated characters walking around.
+
+  Look Z
+    These input boxes are displayed on some sort of illustrated background.
+
+
+
+
+NOTES FOR JANUARY 31st
+1. navigating down suggestions with arrow keys
+2. click or press entered when focused to select
+3. when selected, it will fill input box with that word
+4. as you type, tiles appear
+5. when input box gets left, dropdown goes away
+6. phrase dash isn't visible as long as focus is on the category input
+7. dropdown has z index? is above everything else at least
+8. when you submit through category input, phrase input is automatically focused on
+9. as you type in phrase input, tiles that don't include that string anywhere disappear
+
 
 to do
 
