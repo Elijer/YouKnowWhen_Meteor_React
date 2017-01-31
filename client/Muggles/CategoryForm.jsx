@@ -14,13 +14,18 @@ export default class CategoryForm extends Component {
       var input = event.target.value.trim();
 
       var reg = new RegExp('^' + input, 'ig');
-      var autoComplete = Categories.find({text: reg}).fetch();
-      var results = [];
-      autoComplete.map(function(i){
-        results.push((i.text.trim()))
-      });
-      console.log(results);
-      this.setState({suggestions: results});
+        var autoComplete = Categories.find({text: reg}, {limit:5}).fetch();
+        var results = [];
+        autoComplete.map(function(i){
+          results.push((i.text.toString()))
+        });
+        if (!input){
+          this.setState({suggestions: ""});
+        } else {
+        this.setState({suggestions: results});
+        }
+        console.log(this.state.suggestions);
+
       //Session.set("liveCategoryInput");
       //this.setState({value: event.target.value.trim()});
     }
@@ -48,9 +53,57 @@ export default class CategoryForm extends Component {
   render(){
     let liveCategoryInput = Session.get("liveCategoryInput");
     var reg = new RegExp('^' + liveCategoryInput, 'ig');
-    suggestions = (
-      <div>{this.state.suggestions.toString()}</div>
-    )
+    var array = this.state.suggestions;
+    var leng = array.length;
+      if(leng<=0){
+        suggestions=(<div></div>)
+      }
+      else if (leng===1){
+          suggestions = (
+            <ul>
+              <li>{array[0]}</li>
+            </ul>
+          )
+        }
+        else if (leng===2){
+          suggestions = (
+            <ul>
+              <li>{array[0]}</li>
+              <li>{array[1]}</li>
+            </ul>
+          )
+        }
+        else if (leng===3){
+          suggestions = (
+            <ul>
+              <li>{array[0]}</li>
+              <li>{array[1]}</li>
+              <li>{array[2]}</li>
+            </ul>
+          )
+        }
+        else if (leng===4){
+          suggestions = (
+            <ul>
+              <li>{array[0]}</li>
+              <li>{array[1]}</li>
+              <li>{array[2]}</li>
+              <li>{array[3]}</li>
+            </ul>
+          )
+        }
+        else if (leng===5){
+          suggestions = (
+            <ul>
+              <li>{array[0]}</li>
+              <li>{array[1]}</li>
+              <li>{array[2]}</li>
+              <li>{array[3]}</li>
+              <li>{array[4]}</li>
+            </ul>
+          )
+        }
+
 
     return (
             <form className="select-category"
