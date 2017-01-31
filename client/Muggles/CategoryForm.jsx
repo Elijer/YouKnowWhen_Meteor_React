@@ -55,6 +55,7 @@ export default class CategoryForm extends Component {
   render(){
     let liveCategoryInput = Session.get("liveCategoryInput");
     var reg = new RegExp('^' + liveCategoryInput, 'ig');
+
     var array = this.state.suggestions;
     var leng = array.length;
       if(leng<=0){
@@ -63,48 +64,58 @@ export default class CategoryForm extends Component {
       else if (leng===1){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className="individualSuggestion" tabIndex="4">{array[0]}</p3>
+              <p3 className={"individualSuggestion"+array[0]}>{array[0]}</p3>
             </div>
           )
         }
         else if (leng===2){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className="individualSuggestion">{array[0]}</p3>
-              <p3 className="individualSuggestion">{array[1]}</p3>
+              <p3 className={"individualSuggestion"+array[0]}>{array[0]}</p3>
+              <p3 className={"individualSuggestion"+array[1]}>{array[1]}</p3>
             </div>
           )
         }
         else if (leng===3){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className="individualSuggestion">{array[0]}</p3>
-              <p3 className="individualSuggestion">{array[1]}</p3>
-              <p3 className="individualSuggestion">{array[2]}</p3>
+              <p3 className={"individualSuggestion"+array[0]}>{array[0]}</p3>
+              <p3 className={"individualSuggestion"+array[1]}>{array[1]}</p3>
+              <p3 className={"individualSuggestion"+array[2]}>{array[2]}</p3>
             </div>
           )
         }
         else if (leng===4){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className="individualSuggestion">{array[0]}</p3>
-              <p3 className="individualSuggestion">{array[1]}</p3>
-              <p3 className="individualSuggestion">{array[2]}</p3>
-              <p3 className="individualSuggestion">{array[3]}</p3>
+              <p3 className={"individualSuggestion"+array[0]}>{array[0]}</p3>
+              <p3 className={"individualSuggestion"+array[1]}>{array[1]}</p3>
+              <p3 className={"individualSuggestion"+array[2]}>{array[2]}</p3>
+              <p3 className={"individualSuggestion"+array[3]}>{array[3]}</p3>
             </div>
           )
         }
         else if (leng===5){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className="individualSuggestion">{array[0]}</p3>
-              <p3 className="individualSuggestion">{array[1]}</p3>
-              <p3 className="individualSuggestion">{array[2]}</p3>
-              <p3 className="individualSuggestion">{array[3]}</p3>
-              <p3 className="individualSuggestion">{array[4]}</p3>
+              <p3 className={"individualSuggestion"+array[0]}>{array[0]}</p3>
+              <p3 className={"individualSuggestion"+array[1]}>{array[1]}</p3>
+              <p3 className={"individualSuggestion"+array[2]}>{array[2]}</p3>
+              <p3 className={"individualSuggestion"+array[3]}>{array[3]}</p3>
+              <p3 className={"individualSuggestion"+array[4]}>{array[4]}</p3>
             </div>
           )
         }
+
+        //key events
+        $(document).on('keydown', function (e) {
+          if (e.keyCode == '38') {
+              console.log("keyyyyyyyUP");
+          }
+          else if (e.keyCode == '40') {
+              console.log("keyyyyyyyDAAAAwwwwn");
+          }
+        });
 
 
     return (
