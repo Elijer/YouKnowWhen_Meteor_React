@@ -60,47 +60,47 @@ export default class CategoryForm extends Component {
       }
       else if (leng===1){
           suggestions = (
-            <ul>
-              <li>{array[0]}</li>
-            </ul>
+            <div className="suggestionsContainer">
+              <p3 className="individualSuggestion">{array[0]}</p3>
+            </div>
           )
         }
         else if (leng===2){
           suggestions = (
-            <ul>
-              <li>{array[0]}</li>
-              <li>{array[1]}</li>
-            </ul>
+            <div className="suggestionsContainer">
+              <p3 className="individualSuggestion">{array[0]}</p3>
+              <p3 className="individualSuggestion">{array[1]}</p3>
+            </div>
           )
         }
         else if (leng===3){
           suggestions = (
-            <ul>
-              <li>{array[0]}</li>
-              <li>{array[1]}</li>
-              <li>{array[2]}</li>
-            </ul>
+            <div className="suggestionsContainer">
+              <p3 className="individualSuggestion">{array[0]}</p3>
+              <p3 className="individualSuggestion">{array[1]}</p3>
+              <p3 className="individualSuggestion">{array[2]}</p3>
+            </div>
           )
         }
         else if (leng===4){
           suggestions = (
-            <ul>
-              <li>{array[0]}</li>
-              <li>{array[1]}</li>
-              <li>{array[2]}</li>
-              <li>{array[3]}</li>
-            </ul>
+            <div className="suggestionsContainer">
+              <p3 className="individualSuggestion">{array[0]}</p3>
+              <p3 className="individualSuggestion">{array[1]}</p3>
+              <p3 className="individualSuggestion">{array[2]}</p3>
+              <p3 className="individualSuggestion">{array[3]}</p3>
+            </div>
           )
         }
         else if (leng===5){
           suggestions = (
-            <ul>
-              <li>{array[0]}</li>
-              <li>{array[1]}</li>
-              <li>{array[2]}</li>
-              <li>{array[3]}</li>
-              <li>{array[4]}</li>
-            </ul>
+            <div className="suggestionsContainer">
+              <p3 className="individualSuggestion">{array[0]}</p3>
+              <p3 className="individualSuggestion">{array[1]}</p3>
+              <p3 className="individualSuggestion">{array[2]}</p3>
+              <p3 className="individualSuggestion">{array[3]}</p3>
+              <p3 className="individualSuggestion">{array[4]}</p3>
+            </div>
           )
         }
 
