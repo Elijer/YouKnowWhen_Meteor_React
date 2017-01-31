@@ -82,6 +82,16 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       )
     }
 
+    //key events
+    $(document).on('keydown', function (e) {
+      if (e.keyCode == '38') {
+          console.log("keyyyyyyyUP");
+      }
+      else if (e.keyCode == '40') {
+          console.log("keyyyyyyyDAAAAwwwwn");
+      }
+    });
+
     return(
       <div className="category-phrase-dashboard">
         <h1>You know you're a &nbsp; <CategoryForm /> {userPrompt}</h1>

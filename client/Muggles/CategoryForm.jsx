@@ -63,7 +63,7 @@ export default class CategoryForm extends Component {
       else if (leng===1){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className="individualSuggestion">{array[0]}</p3>
+              <p3 className="individualSuggestion" tabIndex="4">{array[0]}</p3>
             </div>
           )
         }
