@@ -18,6 +18,7 @@ export default class PhraseForm extends Component {
               ref="newPhrase"
               placeholder="add new phrase"
               maxLength="45"
+              list="yo"
               />
           </form>
         </span>

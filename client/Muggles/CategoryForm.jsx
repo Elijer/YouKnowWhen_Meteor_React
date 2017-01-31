@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
+import Autosuggest from 'react-autosuggest';
 
 export default class CategoryForm extends Component {
 
@@ -10,26 +11,13 @@ export default class CategoryForm extends Component {
     }
 
     handleChange(event) {
-      //console.log(event.target.value);
-      //this.setState({value: event.target.value.toUpperCase()});
       var input = event.target.value.trim();
-      //var re = new RegExp("ab+c");
-      //var inputRegex = new RegExp("^input");
-      //console.log(input);
-      //this.setState({value: event.target.value});
-
-      //var regexString = '\\^{' + input + '}';
-      //var regex = new RegExp(regexString);
-      //var reg = new RegExp('\{'+input+'\}', 'gi');
-      var reg = new RegExp('^' + input.toString());
-
+      var reg = new RegExp('^' + input, 'ig');
       var autoComplete = Categories.find({text: reg}).fetch();
-      //console.log(autoComplete);
-      console.log(autoComplete);
-
-      //db.inventory.find( { tags: { $in: [ /^be/, /^st/ ] } } )
-      //console.log(Categories.find({text: /^{input}/ }).fetch());
-      //console.log(autoComplete);
+      var results = [];
+      autoComplete.map(function(i){
+        results.push((i.text))
+      });
     }
 
   selectCategory(event){
@@ -58,6 +46,11 @@ export default class CategoryForm extends Component {
                 ref="currentCategory"
                 placeholder="Web designer"
                 onChange={this.handleChange}/>
+                <ul>
+                  <li>yo</li>
+                  <li>yo</li>
+                  <li>yo</li>
+                </ul>
               </label>
             {/*
             <input type="text"
