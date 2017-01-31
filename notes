@@ -85,3 +85,24 @@ User Testing
 1. Reach out to Michelle and a couple illustrators about how this dashboard concept looks to them
 2. test it out with every iteration.
 3. Animations
+
+
+arrow key select
+    1), URL: http://stackoverflow.com/questions/5304051/how-do-you-make-up-and-down-arrows-highlight-items-in-a-list-jquery
+
+                $(document).keyup(function(e) {
+                    var $hlight = $('div.hlight'), $div = $('div');
+                    if (e.keyCode == 40) {
+                        $hlight.removeClass('hlight').next().addClass('hlight');
+                        if ($hlight.next().length == 0) {
+                            $div.eq(0).addClass('hlight')
+                        }
+                    } else if (e.keyCode === 38) {
+                        $hlight.removeClass('hlight').prev().addClass('hlight');
+                        if ($hlight.prev().length == 0) {
+                            $div.eq(-1).addClass('hlight')
+                        }
+                    }
+                })
+
+    2), URL: http://jsfiddle.net/Vtn5Y/

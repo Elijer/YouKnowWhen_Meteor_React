@@ -47,7 +47,9 @@ export default class CategoryForm extends Component {
   }
 
   blurTest(event){
-    console.log("blurred");
+    if(document.activeElement !== this) {
+        console.log("blurred");
+    }
   }
 
   render(){
@@ -121,25 +123,4 @@ export default class CategoryForm extends Component {
     }
 }
 
-{/*}
-<Autosuggest
-  suggestions={results}
-  onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-  onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-  getSuggestionValue={getSuggestionValue}
-  renderSuggestion={renderSuggestion}
-  inputProps={inputProps}
-/>
-*/}
-
-{/*}
-<Autosuggest
-  suggestions={suggestions}
-  onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-  onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-  getSuggestionValue={getSuggestionValue}
-  renderSuggestion={renderSuggestion}
-  inputProps={inputProps}
-/>
-*/}
                 {/*value={this.state.value}*/}

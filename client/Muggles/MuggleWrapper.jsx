@@ -77,7 +77,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     else {
       results = (
         <span className="label label-info">
-        <p1>(Please type in a category to begin.)</p1>
+        <p1>(Please type in a category and press 'enter' to begin.)</p1>
         </span>
       )
     }
