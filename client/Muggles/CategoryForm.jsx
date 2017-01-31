@@ -1,23 +1,32 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
-import Autosuggest from 'react-autosuggest';
+import autocompleteInput from '../autoComplete/autocompleteInput.jsx'
 
 export default class CategoryForm extends Component {
 
     constructor(props) {
       super(props);
-      this.state = {value: ''};
+      this.state = {value: '', suggestions: ''};
       this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
       var input = event.target.value.trim();
+
       var reg = new RegExp('^' + input, 'ig');
       var autoComplete = Categories.find({text: reg}).fetch();
       var results = [];
       autoComplete.map(function(i){
-        results.push((i.text))
+        results.push((i.text.trim()))
       });
+      console.log(results);
+      this.setState({suggestions: results});
+      //Session.set("liveCategoryInput");
+      //this.setState({value: event.target.value.trim()});
+    }
+
+    categories(searchKey){
+      return Categories.find(searchKey).fetch();
     }
 
   selectCategory(event){
@@ -37,6 +46,12 @@ export default class CategoryForm extends Component {
   }
 
   render(){
+    let liveCategoryInput = Session.get("liveCategoryInput");
+    var reg = new RegExp('^' + liveCategoryInput, 'ig');
+    suggestions = (
+      <div>{this.state.suggestions.toString()}</div>
+    )
+
     return (
             <form className="select-category"
               onSubmit={this.selectCategory.bind(this)}
@@ -46,20 +61,32 @@ export default class CategoryForm extends Component {
                 ref="currentCategory"
                 placeholder="Web designer"
                 onChange={this.handleChange}/>
-                <ul>
-                  <li>yo</li>
-                  <li>yo</li>
-                  <li>yo</li>
-                </ul>
+              {suggestions}
               </label>
-            {/*
-            <input type="text"
-              ref="currentCategory"
-              placeholder="Web designer" />
-              */}
           </form>
         )
     }
 }
 
+{/*}
+<Autosuggest
+  suggestions={results}
+  onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+  onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+  getSuggestionValue={getSuggestionValue}
+  renderSuggestion={renderSuggestion}
+  inputProps={inputProps}
+/>
+*/}
+
+{/*}
+<Autosuggest
+  suggestions={suggestions}
+  onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+  onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+  getSuggestionValue={getSuggestionValue}
+  renderSuggestion={renderSuggestion}
+  inputProps={inputProps}
+/>
+*/}
                 {/*value={this.state.value}*/}
