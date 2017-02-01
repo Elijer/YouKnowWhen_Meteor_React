@@ -6,8 +6,25 @@ export default class CategoryForm extends Component {
 
     constructor(props) {
       super(props);
-      this.state = {value: '', suggestions: ''};
+      this.state = {value: '', suggestions: '', selectedSuggestion: ''};
       this.handleChange = this.handleChange.bind(this);
+      this.handleKeyPress = this.handleKeyPress.bind(this);
+    }
+
+
+    handleKeyPress(e){
+      if (e.keyCode == '38') {
+          console.log("initial = " + this.state.selectedSuggestion);
+          var selected = this.state.selectedSuggestion;
+          selected[0]=!selected[0];
+          console.log("result = " + this.state.selectedSuggestion);
+          console.log("selected" + this.state.selectedSuggestion[0]);
+          //this.setState({selectedSuggestion: selected});
+          //console.log("state result = " + this.state.selectedSuggestion);
+      }
+      else if (e.keyCode == '40') {
+          console.log("keyyyyyyyDAAAAwwwwn");
+      }
     }
 
     handleChange(event) {
@@ -16,16 +33,17 @@ export default class CategoryForm extends Component {
       var reg = new RegExp('^' + input, 'ig');
         var autoComplete = Categories.find({text: reg}, {limit:5}).fetch();
         var results = [];
+        var selectedSuggestion = [];
         autoComplete.map(function(i){
-          results.push((i.text.toString()))
+          results.push((i.text.toString()));
+          selectedSuggestion.push(false);
         });
         if (!input){
-          this.setState({suggestions: ""});
+          this.setState({suggestions: "", selectedSuggestion: ""});
         } else {
         this.setState({suggestions: results});
+        this.setState({selectedSuggestion: selectedSuggestion})
         }
-        console.log(this.state.suggestions);
-
       //Session.set("liveCategoryInput");
       //this.setState({value: event.target.value.trim()});
     }
@@ -64,64 +82,62 @@ export default class CategoryForm extends Component {
       else if (leng===1){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className={"individualSuggestion"+array[0]}>{array[0]}</p3>
+              <p3 className="individualSuggestion" className="selectedfalse">{array[0]}</p3>
             </div>
           )
         }
         else if (leng===2){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className={"individualSuggestion"+array[0]}>{array[0]}</p3>
-              <p3 className={"individualSuggestion"+array[1]}>{array[1]}</p3>
+              <p3 className="individualSuggestion">{array[0]}</p3>
+              <p3 className="individualSuggestion">{array[1]}</p3>
             </div>
           )
         }
         else if (leng===3){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className={"individualSuggestion"+array[0]}>{array[0]}</p3>
-              <p3 className={"individualSuggestion"+array[1]}>{array[1]}</p3>
-              <p3 className={"individualSuggestion"+array[2]}>{array[2]}</p3>
+              <p3 className="individualSuggestion">{array[0]}</p3>
+              <p3 className="individualSuggestion">{array[1]}</p3>
+              <p3 className="individualSuggestion">{array[2]}</p3>
             </div>
           )
         }
         else if (leng===4){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className={"individualSuggestion"+array[0]}>{array[0]}</p3>
-              <p3 className={"individualSuggestion"+array[1]}>{array[1]}</p3>
-              <p3 className={"individualSuggestion"+array[2]}>{array[2]}</p3>
-              <p3 className={"individualSuggestion"+array[3]}>{array[3]}</p3>
+              <p3 className="individualSuggestion">{array[0]}</p3>
+              <p3 className="individualSuggestion">{array[1]}</p3>
+              <p3 className="individualSuggestion">{array[2]}</p3>
+              <p3 className="individualSuggestion">{array[3]}</p3>
             </div>
           )
         }
         else if (leng===5){
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className={"individualSuggestion"+array[0]}>{array[0]}</p3>
-              <p3 className={"individualSuggestion"+array[1]}>{array[1]}</p3>
-              <p3 className={"individualSuggestion"+array[2]}>{array[2]}</p3>
-              <p3 className={"individualSuggestion"+array[3]}>{array[3]}</p3>
-              <p3 className={"individualSuggestion"+array[4]}>{array[4]}</p3>
+              <p3 className="individualSuggestion">{array[0]}</p3>
+              <p3 className="individualSuggestion">{array[1]}</p3>
+              <p3 className="individualSuggestion">{array[2]}</p3>
+              <p3 className="individualSuggestion">{array[3]}</p3>
+              <p3 className="individualSuggestion">{array[4]}</p3>
             </div>
           )
         }
 
-        //key events
+        //key events for autosuggest
+        {/*
         $(document).on('keydown', function (e) {
-          if (e.keyCode == '38') {
-              console.log("keyyyyyyyUP");
-          }
-          else if (e.keyCode == '40') {
-              console.log("keyyyyyyyDAAAAwwwwn");
-          }
+          CategoryForm.handleKeyPress(e);
         });
+        */}
 
 
     return (
             <form className="select-category"
               onSubmit={this.selectCategory.bind(this)}
-              onBlur={this.selectCategory.bind(this)}>
+              onBlur={this.selectCategory.bind(this)}
+              onKeyDown={this.handleKeyPress}>
               <label>
               <input type="text"
                 ref="currentCategory"
