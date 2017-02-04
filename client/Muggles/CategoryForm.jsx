@@ -78,23 +78,30 @@ export default class CategoryForm extends Component {
     if(this.state.suggestions){
       var suggestionsArray = this.state.suggestions;
       var suggestionsLeng = suggestionsArray.length;
+      console.log(suggestionsArray[0]);
       console.log("There are " + suggestionsLeng + " suggestions for what is typed in the following array: " + suggestionsArray);
-      suggestions = (<div className="suggestionsContainer">{
-        suggestionsArray.map(function(i){
-        return <p3 key={i.toString()} className="individualSuggestion">{suggestionsArray[i]}</p3>
-        })
-      }</div>);
+      suggestions = (
+        <div className="suggestionsContainer">
+          {
+            suggestionsArray.map(function(suggestion){
+              return <p3 key={suggestion} className="individualSuggestion">
+                {suggestion}
+              </p3>
+            })
+          }
+        </div>
+      );
     } else {
       console.log("nothing has been typed");
       suggestions=(
-        <div className="suggestionsContainer">
-            <p3 className="individualSuggestion">hello hello hello</p3>
-        </div>
+        <div></div>
       );
     }
+    {/*
     var selectionStatusArray = this.state.selectedSuggestion;
-    suggestionsArray = []
-    /*
+    var array = this.state.suggestions;
+    var leng = array.length;
+
       if(leng<=0){
         suggestions=(<div></div>)
       }
@@ -146,7 +153,8 @@ export default class CategoryForm extends Component {
             </div>
           )
         }
-*/
+        */}
+
 
         //key events for autosuggest
         {/*
