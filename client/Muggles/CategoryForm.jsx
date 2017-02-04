@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
-import autocompleteInput from '../autoComplete/autocompleteInput.jsx'
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-export default class CategoryForm extends Component {
+export default class CategoryForm extends TrackerReact(React.Component) {
 
     constructor(props) {
       super(props);
@@ -14,14 +14,16 @@ export default class CategoryForm extends Component {
 
     handleKeyPress(e){
       if (e.keyCode == '38') {
-          //console.log("initial = " + this.state.selectedSuggestion);
+          console.log("initial = " + this.state.selectedSuggestion);
           var selected = this.state.selectedSuggestion;
           selected[0]=!selected[0];
           //console.log(this.state.selectedSuggestion[0]);
-          //console.log("result = " + this.state.selectedSuggestion);
+          console.log("result = " + this.state.selectedSuggestion);
           //console.log("selected" + this.state.selectedSuggestion[0]);
           //console.log(this.state.selectedSuggestion[0])
-          //this.setState({selectedSuggestion: selected});
+          //weirdly, the setState line doesn't NEED to be called for everything to work but
+          //the css class only works when form is submitted otherwise
+          this.setState({selectedSuggestion: selected});
           //console.log("state result = " + this.state.selectedSuggestion);
       }
       else if (e.keyCode == '40') {
@@ -29,8 +31,8 @@ export default class CategoryForm extends Component {
       }
     }
 
-    handleChange(event) {
-      var input = event.target.value.trim();
+    handleChange(e) {
+      var input = e.target.value.trim();
 
       var reg = new RegExp('^' + input, 'ig');
         var autoComplete = Categories.find({text: reg}, {limit:5}).fetch();
@@ -76,16 +78,17 @@ export default class CategoryForm extends Component {
     //to avid throwing an error, I have to make sure that state.suggesitons HAS something there
     //otherwise, trying to use it will fuck shit up.
     if(this.state.suggestions){
+      var selected = this.state.selectedSuggestion;
       var suggestionsArray = this.state.suggestions;
       var suggestionsLeng = suggestionsArray.length;
-      console.log(suggestionsArray[0]);
+      //console.log(suggestionsArray[0]);
       console.log("There are " + suggestionsLeng + " suggestions for what is typed in the following array: " + suggestionsArray);
       suggestions = (
         <div className="suggestionsContainer">
           {
-            suggestionsArray.map(function(suggestion){
-              return <p3 key={suggestion} className="individualSuggestion">
-                {suggestion}
+            suggestionsArray.map(function(suggestion, index){
+              return <p3 key={index} className={"selected" + selected[index]}>
+                {suggestion + " " + selected[index]}
               </p3>
             })
           }
@@ -97,65 +100,6 @@ export default class CategoryForm extends Component {
         <div></div>
       );
     }
-    {/*
-    var selectionStatusArray = this.state.selectedSuggestion;
-    var array = this.state.suggestions;
-    var leng = array.length;
-
-      if(leng<=0){
-        suggestions=(<div></div>)
-      }
-      else if (leng===1){
-        moose = selectionStatusArray[0];
-        console.log(moose);
-        moosy = "selected" + moose;
-          suggestions = (
-            <div className="suggestionsContainer">
-              <p3 className={moosy}>{array[0]}</p3>
-            </div>
-          )
-        }
-        else if (leng===2){
-          suggestions = (
-            <div className="suggestionsContainer">
-              <p3 className="individualSuggestion">{array[0]}</p3>
-              <p3 className="individualSuggestion">{array[1]}</p3>
-            </div>
-          )
-        }
-        else if (leng===3){
-          suggestions = (
-            <div className="suggestionsContainer">
-              <p3 className="individualSuggestion">{array[0]}</p3>
-              <p3 className="individualSuggestion">{array[1]}</p3>
-              <p3 className="individualSuggestion">{array[2]}</p3>
-            </div>
-          )
-        }
-        else if (leng===4){
-          suggestions = (
-            <div className="suggestionsContainer">
-              <p3 className="individualSuggestion">{array[0]}</p3>
-              <p3 className="individualSuggestion">{array[1]}</p3>
-              <p3 className="individualSuggestion">{array[2]}</p3>
-              <p3 className="individualSuggestion">{array[3]}</p3>
-            </div>
-          )
-        }
-        else if (leng===5){
-          suggestions = (
-            <div className="suggestionsContainer">
-              <p3 className="individualSuggestion">{array[0]}</p3>
-              <p3 className="individualSuggestion">{array[1]}</p3>
-              <p3 className="individualSuggestion">{array[2]}</p3>
-              <p3 className="individualSuggestion">{array[3]}</p3>
-              <p3 className="individualSuggestion">{array[4]}</p3>
-            </div>
-          )
-        }
-        */}
-
-
         //key events for autosuggest
         {/*
         $(document).on('keydown', function (e) {
@@ -167,13 +111,13 @@ export default class CategoryForm extends Component {
     return (
             <form className="select-category"
               onSubmit={this.selectCategory.bind(this)}
-              onBlur={this.selectCategory.bind(this)}
-              onKeyDown={this.handleKeyPress}>
+              onBlur={this.selectCategory.bind(this)}>
               <label>
               <input type="text"
                 ref="currentCategory"
                 placeholder="Web designer"
-                onChange={this.handleChange}/>
+                onChange={this.handleChange}
+                onKeyDown={this.handleKeyPress}/>
               {suggestions}
               </label>
           </form>
