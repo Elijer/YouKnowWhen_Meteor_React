@@ -14,11 +14,13 @@ export default class CategoryForm extends Component {
 
     handleKeyPress(e){
       if (e.keyCode == '38') {
-          console.log("initial = " + this.state.selectedSuggestion);
+          //console.log("initial = " + this.state.selectedSuggestion);
           var selected = this.state.selectedSuggestion;
           selected[0]=!selected[0];
-          console.log("result = " + this.state.selectedSuggestion);
-          console.log("selected" + this.state.selectedSuggestion[0]);
+          //console.log(this.state.selectedSuggestion[0]);
+          //console.log("result = " + this.state.selectedSuggestion);
+          //console.log("selected" + this.state.selectedSuggestion[0]);
+          //console.log(this.state.selectedSuggestion[0])
           //this.setState({selectedSuggestion: selected});
           //console.log("state result = " + this.state.selectedSuggestion);
       }
@@ -71,18 +73,38 @@ export default class CategoryForm extends Component {
   }
 
   render(){
-    let liveCategoryInput = Session.get("liveCategoryInput");
-    var reg = new RegExp('^' + liveCategoryInput, 'ig');
-
-    var array = this.state.suggestions;
-    var leng = array.length;
+    //to avid throwing an error, I have to make sure that state.suggesitons HAS something there
+    //otherwise, trying to use it will fuck shit up.
+    if(this.state.suggestions){
+      var suggestionsArray = this.state.suggestions;
+      var suggestionsLeng = suggestionsArray.length;
+      console.log("There are " + suggestionsLeng + " suggestions for what is typed in the following array: " + suggestionsArray);
+      suggestions = (<div className="suggestionsContainer">{
+        suggestionsArray.map(function(i){
+        return <p3 key={i.toString()} className="individualSuggestion">{suggestionsArray[i]}</p3>
+        })
+      }</div>);
+    } else {
+      console.log("nothing has been typed");
+      suggestions=(
+        <div className="suggestionsContainer">
+            <p3 className="individualSuggestion">hello hello hello</p3>
+        </div>
+      );
+    }
+    var selectionStatusArray = this.state.selectedSuggestion;
+    suggestionsArray = []
+    /*
       if(leng<=0){
         suggestions=(<div></div>)
       }
       else if (leng===1){
+        moose = selectionStatusArray[0];
+        console.log(moose);
+        moosy = "selected" + moose;
           suggestions = (
             <div className="suggestionsContainer">
-              <p3 className="individualSuggestion" className="selectedfalse">{array[0]}</p3>
+              <p3 className={moosy}>{array[0]}</p3>
             </div>
           )
         }
@@ -124,6 +146,7 @@ export default class CategoryForm extends Component {
             </div>
           )
         }
+*/
 
         //key events for autosuggest
         {/*
