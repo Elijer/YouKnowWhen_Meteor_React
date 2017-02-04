@@ -6,51 +6,50 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
     constructor(props) {
       super(props);
-      this.state = {value: '', suggestions: '', selectedSuggestion: ''};
+      this.state = {value: '', suggestions: '', selectedSuggestions: ''};
+      //binds handleChange function to any event of the category input bar
       this.handleChange = this.handleChange.bind(this);
+      //bings handleKeyPress event to any keyboard event when input is focused on
       this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
 
-    handleKeyPress(e){
+    handleKeyPress(e) {
       if (e.keyCode == '38') {
-          console.log("initial = " + this.state.selectedSuggestion);
-          var selected = this.state.selectedSuggestion;
+          var selected = this.state.selectedSuggestions;
           selected[0]=!selected[0];
-          //console.log(this.state.selectedSuggestion[0]);
-          console.log("result = " + this.state.selectedSuggestion);
-          //console.log("selected" + this.state.selectedSuggestion[0]);
-          //console.log(this.state.selectedSuggestion[0])
-          //weirdly, the setState line doesn't NEED to be called for everything to work but
-          //the css class only works when form is submitted otherwise
-          this.setState({selectedSuggestion: selected});
-          //console.log("state result = " + this.state.selectedSuggestion);
+          console.log("keyup result = " + this.state.selectedSuggestions);
+          //partial functionality without setState line below. Not good.
+          this.setState({selectedSuggestions: selected});
       }
       else if (e.keyCode == '40') {
-          console.log("keyyyyyyyDAAAAwwwwn");
+        //triggered if "down" arrow key is pressed
+          console.log("key dah woon");
       }
     }
 
+    //handles changes in the upper category form input
     handleChange(e) {
       var input = e.target.value.trim();
-
-      var reg = new RegExp('^' + input, 'ig');
-        var autoComplete = Categories.find({text: reg}, {limit:5}).fetch();
-        var results = [];
-        var selectedSuggestion = [];
-        autoComplete.map(function(i){
+      var reg = new RegExp('^' + input, 'ig'); // creates regular expression denoting all truncations of input
+      var autoCompleteQuery = Categories.find({text: reg}, {limit:5}).fetch();
+      //create empty arrays to push data into
+      var results = [];
+      var selectedSuggestions = [];
+      //fill the results and selectedSuggestions arrays with user-typed data
+      autoCompleteQuery.map(
+        function(i){
           results.push((i.text.toString()));
-          selectedSuggestion.push(false);
-        });
-        if (!input){
-          this.setState({suggestions: "", selectedSuggestion: ""});
-        } else {
-        this.setState({suggestions: results});
-        this.setState({selectedSuggestion: selectedSuggestion})
+          selectedSuggestions.push(false);
         }
-      //Session.set("liveCategoryInput");
-      //this.setState({value: event.target.value.trim()});
-    }
+      );
+      //if input, change states to input. if not, set states to "".
+      if (!input){
+        this.setState({suggestions: "", selectedSuggestions: ""});
+      } else {
+        this.setState({suggestions: results, selectedSuggestions: selectedSuggestions});
+      }
+    }//end of handChange(){}
 
     categories(searchKey){
       return Categories.find(searchKey).fetch();
@@ -68,17 +67,11 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     }
   }
 
-  blurTest(event){
-    if(document.activeElement !== this) {
-        console.log("blurred");
-    }
-  }
-
   render(){
     //to avid throwing an error, I have to make sure that state.suggesitons HAS something there
     //otherwise, trying to use it will fuck shit up.
     if(this.state.suggestions){
-      var selected = this.state.selectedSuggestion;
+      var selected = this.state.selectedSuggestions;
       var suggestionsArray = this.state.suggestions;
       var suggestionsLeng = suggestionsArray.length;
       //console.log(suggestionsArray[0]);
@@ -100,18 +93,10 @@ export default class CategoryForm extends TrackerReact(React.Component) {
         <div></div>
       );
     }
-        //key events for autosuggest
-        {/*
-        $(document).on('keydown', function (e) {
-          CategoryForm.handleKeyPress(e);
-        });
-        */}
-
 
     return (
             <form className="select-category"
-              onSubmit={this.selectCategory.bind(this)}
-              onBlur={this.selectCategory.bind(this)}>
+              onSubmit={this.selectCategory.bind(this)}>
               <label>
               <input type="text"
                 ref="currentCategory"
@@ -125,4 +110,15 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     }
 }
 
-                {/*value={this.state.value}*/}
+
+{/*value={this.state.value}*/}
+{/*
+// this was found in the body of the app
+  blurTest(event){
+    if(document.activeElement !== this) {
+        console.log("blurred");
+    }
+  }
+  */}
+{/* ///the following can be put right below the this.selectCategory.bind(this) attribute of <form>
+  onBlur={this.selectCategory.bind(this)*/}
