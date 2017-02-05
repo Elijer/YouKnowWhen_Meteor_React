@@ -17,9 +17,20 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     handleKeyPress(e) {
       if (e.keyCode == '38') {
           var selected = this.state.selectedSuggestions;
-          selected[1]=!selected[1];
-          selected[0]=!selected[0];
-          if (selected[0]=true){
+          var leng = selected.length;
+          var cycle = [];
+          //max index will always be one less than selected.length
+          //so if example length is 6, example max-index is 5
+          for (var i=leng-1; i>=0; i--){
+            if (i > 0){
+              cycle[i] = selected[i-1];
+            } else {
+              cycle[i] = selected[leng-1]
+            }
+          }
+          var selected = cycle;
+
+          if (selected[0]=false){
             this.refs.currentCategory.blur();
           }
           console.log("keyup result = " + this.state.selectedSuggestions);
