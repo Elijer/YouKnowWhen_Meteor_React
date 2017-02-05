@@ -17,7 +17,11 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     handleKeyPress(e) {
       if (e.keyCode == '38') {
           var selected = this.state.selectedSuggestions;
+          selected[1]=!selected[1];
           selected[0]=!selected[0];
+          if (selected[0]=true){
+            this.refs.currentCategory.blur();
+          }
           console.log("keyup result = " + this.state.selectedSuggestions);
           //partial functionality without setState line below. Not good.
           this.setState({selectedSuggestions: selected});
@@ -30,17 +34,19 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
     //handles changes in the upper category form input
     handleChange(e) {
+      var numOfResults = 5;
       var input = e.target.value.trim();
       var reg = new RegExp('^' + input, 'ig'); // creates regular expression denoting all truncations of input
-      var autoCompleteQuery = Categories.find({text: reg}, {limit:5}).fetch();
+      var autoCompleteQuery = Categories.find({text: reg}, {limit:numOfResults}).fetch();
       //create empty arrays to push data into
       var results = [];
       var selectedSuggestions = [];
+      selectedSuggestions[0] = true;
       //fill the results and selectedSuggestions arrays with user-typed data
       autoCompleteQuery.map(
-        function(i){
+        function(i, index){
           results.push((i.text.toString()));
-          selectedSuggestions.push(false);
+          selectedSuggestions[index+1] = false;
         }
       );
       //if input, change states to input. if not, set states to "".
@@ -80,8 +86,8 @@ export default class CategoryForm extends TrackerReact(React.Component) {
         <div className="suggestionsContainer">
           {
             suggestionsArray.map(function(suggestion, index){
-              return <p3 key={index} className={"selected" + selected[index]}>
-                {suggestion + " " + selected[index]}
+              return <p3 key={index} className={"selected" + selected[index+1]}>
+                {suggestion + " " + selected[index+1]}
               </p3>
             })
           }
