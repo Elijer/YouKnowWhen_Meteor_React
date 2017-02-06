@@ -13,41 +13,45 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
-
     handleKeyPress(e) {
       if (e.keyCode == '38') {
-          var selected = this.state.selectedSuggestions;
-          var leng = selected.length;
-          var cycle = [];
-          //max index will always be one less than selected.length
-          //so if example length is 6, example max-index is 5
-          for (var i=leng-1; i>=0; i--){
-            if (i > 0){
-              cycle[i] = selected[i-1];
+          var array = this.state.selectedSuggestions;
+          var tempArray = [];
+
+          for (var i = array.length-1; i >= 0; i--){
+            if(i>0){
+              tempArray[i] = array[i-1];
             } else {
-              cycle[i] = selected[leng-1]
+              tempArray[i] = array[array.length-1]
             }
           }
-          var selected = cycle;
 
-          if (selected[0]=false){
-            this.refs.currentCategory.blur();
-          }
-          console.log("keyup result = " + this.state.selectedSuggestions);
-          //partial functionality without setState line below. Not good.
-          this.setState({selectedSuggestions: selected});
+          this.setState({selectedSuggestions: tempArray});
+          console.log(this.state.selectedSuggestions);
       }
+
       else if (e.keyCode == '40') {
-        //triggered if "down" arrow key is pressed
-          console.log("key dah woon");
+        var array = this.state.selectedSuggestions;
+        var tempArray = [];
+
+        for (var i = array.length-1; i>=0; i--){
+          if(i<=array.length-2){
+            tempArray[i] = array[i+1];
+          } else {
+            tempArray[i] = array[0];
+          }
+        }
+
+        this.setState({selectedSuggestions: tempArray});
+        console.log(this.state.selectedSuggestions);
       }
     }
 
     //handles changes in the upper category form input
     handleChange(e) {
-      var numOfResults = 5;
       var input = e.target.value.trim();
       var reg = new RegExp('^' + input, 'ig'); // creates regular expression denoting all truncations of input
+      var numOfResults = 5;
       var autoCompleteQuery = Categories.find({text: reg}, {limit:numOfResults}).fetch();
       //create empty arrays to push data into
       var results = [];
@@ -139,3 +143,9 @@ export default class CategoryForm extends TrackerReact(React.Component) {
   */}
 {/* ///the following can be put right below the this.selectCategory.bind(this) attribute of <form>
   onBlur={this.selectCategory.bind(this)*/}
+
+{/*
+  if (array[0]=false){
+    this.refs.currentCategory.blur();
+  }
+  */}
