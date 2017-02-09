@@ -14,25 +14,12 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     }
 
     handleKeyPress(e) {
+      //console.log('up.');
+      tempArray = [];
+      var array = this.state.selectedSuggestions;
+      /////////
       if (e.keyCode == '38') {
-          var array = this.state.selectedSuggestions;
-          var tempArray = [];
-
-          for (var i = array.length-1; i >= 0; i--){
-            if(i>0){
-              tempArray[i] = array[i-1];
-            } else {
-              tempArray[i] = array[array.length-1]
-            }
-          }
-
-          this.setState({selectedSuggestions: tempArray});
-          console.log(this.state.selectedSuggestions);
-      }
-
-      else if (e.keyCode == '40') {
         var array = this.state.selectedSuggestions;
-        var tempArray = [];
 
         for (var i = array.length-1; i>=0; i--){
           if(i<=array.length-2){
@@ -43,7 +30,27 @@ export default class CategoryForm extends TrackerReact(React.Component) {
         }
 
         this.setState({selectedSuggestions: tempArray});
-        console.log(this.state.selectedSuggestions);
+      }
+      else if (e.keyCode == '40') {
+        for (var i = array.length-1; i >= 0; i--){
+          if(i>0){
+            tempArray[i] = array[i-1];
+          } else {
+            tempArray[i] = array[array.length-1]
+          }
+        }
+        this.setState({selectedSuggestions: tempArray});
+      }
+
+      if (tempArray[0] === true){
+        e.target.value = "";
+      } else {
+        for (var i = 0; i <= tempArray.length; i++){
+          if(tempArray[i] === true){
+              e.target.value = this.state.suggestions[i-1];
+              e.target.setSelectionRange(11,11);
+            }
+          }
       }
     }
 
@@ -76,17 +83,23 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       return Categories.find(searchKey).fetch();
     }
 
-  selectCategory(event){
-    event.preventDefault();
-    var text = this.refs.currentCategory.value.trim();
-    Session.set("currentCategory", text);
-    var dbText = Categories.findOne({text: text});
-    //Modal.show("categoryModal");
-    //console.log(dbText===text);
-    if (!dbText){
-    Modal.show("categoryModal");
+    resetForm(){
+      event.preventDefault();
+      var selected = this.state.selectedSuggestions;
+      console.log("asdfasf");
     }
-  }
+
+    selectCategory(event){
+      event.preventDefault();
+      var text = this.refs.currentCategory.value.trim();
+      Session.set("currentCategory", text);
+      var dbText = Categories.findOne({text: text});
+      //Modal.show("categoryModal");
+      //console.log(dbText===text);
+      if (!dbText){
+      Modal.show("categoryModal");
+      }
+    }
 
   render(){
     //to avid throwing an error, I have to make sure that state.suggesitons HAS something there
@@ -102,7 +115,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
           {
             suggestionsArray.map(function(suggestion, index){
               return <p3 key={index} className={"selected" + selected[index+1]}>
-                {suggestion + " " + selected[index+1]}
+                {suggestion}
               </p3>
             })
           }
