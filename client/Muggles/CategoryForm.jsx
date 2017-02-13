@@ -97,7 +97,22 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       //Modal.show("categoryModal");
       //console.log(dbText===text);
       if (!dbText){
-      Modal.show("categoryModal");
+      //Modal.show("categoryModal");
+      filepicker.pick({
+          mimetype: 'image/*',
+          container: '',
+          services: ['COMPUTER', 'FACEBOOK', 'INSTAGRAM', 'GOOGLE_DRIVE', 'DROPBOX']
+        },
+        function(Blob){
+          var blobString = JSON.stringify(Blob);
+          var blobObject = JSON.parse(blobString);
+          //console.log(blobString);
+          console.log(blobObject);
+          Session.set("image", blobObject.url);
+        },
+        function(FPError){
+          console.log(FPError.toString());
+        });
       }
     }
 
@@ -138,6 +153,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
                 onChange={this.handleChange}
                 onKeyDown={this.handleKeyPress}/>
               {suggestions}
+              <img src={Session.get("image")} alt="Smiley face"/>
               </label>
           </form>
         )
@@ -147,6 +163,8 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
 {/*value={this.state.value}*/}
 {/*
+              <img src={Session.get("image")} alt="Smiley face"/>
+
 // this was found in the body of the app
   blurTest(event){
     if(document.activeElement !== this) {
