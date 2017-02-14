@@ -19,16 +19,21 @@ export default class PhraseSingleI extends TrackerReact(React.Component) {
 
   uploadImage(){
     //console.log(this.props.phrase.text);
-    console.log(this.props.phrase._id);
+    var id = this.props.phrase._id;
+    //console.log(this.props.phrase._id);
     filepicker.pick({
         mimetype: 'image/*', container: '', services: ['COMPUTER', 'FACEBOOK', 'INSTAGRAM', 'GOOGLE_DRIVE', 'DROPBOX']
       },
       function(Blob){
         var blobString = JSON.stringify(Blob);
         var blobObject = JSON.parse(blobString);
+        //console.log(blobObject.url);
+        Meteor.call('addImage', id, blobObject.url);
+        //console.log(Phrases.findOne({_id: id}).imageUrl);
+        //addImage(id, newUrl)
         //console.log(blobString);
-        console.log(blobObject.url);
-        Session.set("imageUrl", blobObject.url);
+        //console.log(blobObject.url);
+        //Session.set("imageUrl", blobObject.url);
         //this.state.image = blobObject.url;
       },
       function(FPError){
@@ -37,6 +42,15 @@ export default class PhraseSingleI extends TrackerReact(React.Component) {
   }
 
   render(){
+    var imageUrl = Phrases.findOne({_id: this.props.phrase._id}).imageUrl;
+    if (imageUrl){
+      image = (<img src={imageUrl} alt="Smiley face" width="300px" height="300px"/>);
+    } else {
+      image = (<p1>nope</p1>);
+    }
+    //i love u bb jah <3 :)
+
+    /*
     if (Session.get("imageUrl")){
       console.log("image");
       var image = (<img src={Session.get("imageUrl")} alt="Smiley face" width="100px" height=""/>);
@@ -44,13 +58,13 @@ export default class PhraseSingleI extends TrackerReact(React.Component) {
     } else {
       var image = (<div></div>);
       console.log("");
-    }
+    }*/
 
     return (
       <div className="tiles">
           <li>
             {this.props.phrase.text}
-                        {image}
+            {image}
             <button className="btn-upload"
               onClick={this.uploadImage.bind(this)}>
               {"Upload File"}
@@ -66,6 +80,7 @@ export default class PhraseSingleI extends TrackerReact(React.Component) {
                 &times;
               </button>
               */}
+
           </li>
       </div>
     )

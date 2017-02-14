@@ -4,7 +4,13 @@ Meteor.methods({
       text: phrase,
       currentCategory: categoryName,
       complete: false,
-      createdAt: new Date()
+      createdAt: new Date(),
+      imageUrl: "",
+    });
+  },
+  addImage(id, newUrl){
+    Phrases.update(id, {
+      $set: {imageUrl: newUrl}
     });
   },
   togglePhrase(id, status){
