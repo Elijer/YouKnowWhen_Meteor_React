@@ -6,11 +6,12 @@ Meteor.methods({
       complete: false,
       createdAt: new Date(),
       imageUrl: "",
+      hasImage:false
     });
   },
   addImage(id, newUrl){
     Phrases.update(id, {
-      $set: {imageUrl: newUrl}
+      $set: {imageUrl: newUrl, hasImage: true}
     });
   },
   togglePhrase(id, status){

@@ -6,7 +6,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
     constructor(props) {
       super(props);
-      this.state = {value: '', suggestions: '', selectedSuggestions: ''};
+      this.state = {value: '', suggestions: '', selectedSuggestions: '', suggestionsOn: false};
       //binds handleChange function to any event of the category input bar
       this.handleChange = this.handleChange.bind(this);
       //bings handleKeyPress event to any keyboard event when input is focused on
@@ -56,6 +56,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
     //handles changes in the upper category form input
     handleChange(e) {
+      this.setState({suggestionsOn: true});
       var input = e.target.value.trim();
       var reg = new RegExp('^' + input, 'ig'); // creates regular expression denoting all truncations of input
       var numOfResults = 5;
@@ -91,6 +92,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
     selectCategory(event){
       event.preventDefault();
+      this.setState({suggestionsOn: false});
       var text = this.refs.currentCategory.value.trim();
       Session.set("currentCategory", text);
       var dbText = Categories.findOne({text: text});
@@ -102,29 +104,21 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
   render(){
     //to avid throwing an error, I have to make sure that state.suggesitons HAS something there
-    //otherwise, trying to use it will fuck shit up.
-    if(this.state.suggestions){
+    //state.suggestionsOn is set during relevant events
+    if(this.state.suggestionsOn === true && this.state.suggestions){
       var selected = this.state.selectedSuggestions;
       var suggestionsArray = this.state.suggestions;
-      var suggestionsLeng = suggestionsArray.length;
-      //console.log(suggestionsArray[0]);
-      console.log("There are " + suggestionsLeng + " suggestions for what is typed in the following array: " + suggestionsArray);
       suggestions = (
-        <div className="suggestionsContainer">
-          {
-            suggestionsArray.map(function(suggestion, index){
+          <div className="suggestionsContainer">
+            {suggestionsArray.map(function(suggestion, index){
               return <p3 key={index} className={"selected" + selected[index+1]}>
                 {suggestion}
-              </p3>
-            })
-          }
-        </div>
-      );
+                      </p3>
+              })}
+          </div>
+        );
     } else {
-      console.log("nothing has been typed");
-      suggestions=(
-        <div></div>
-      );
+      suggestions=(<div></div>);
     }
 
     return (

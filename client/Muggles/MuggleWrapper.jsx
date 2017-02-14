@@ -32,7 +32,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
   categories(){
     return Categories.find().fetch();
   }
-  //while inside this App class, this addPhrase function can no be referred to as
+  //while inside this App class, this addPhrase function can not be referred to as
   //this.addPhrase
 
   render(){
