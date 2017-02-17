@@ -34,6 +34,7 @@ export default class PhraseSingleI extends TrackerReact(React.Component) {
 
   render(){
     //i love u bb jah <3 :)
+    /*
     return (
       <div className="tiles">
           <li>
@@ -43,6 +44,18 @@ export default class PhraseSingleI extends TrackerReact(React.Component) {
               {"Upload File"}
             </button>
           </li>
+      </div>
+    )*/
+
+    return (
+      <div className = "tile">
+        <div className = "phraseDiv">
+          <p1 className = "phraseText">{this.props.phrase.text}</p1>
+        </div>
+        <button className = "btn-upload"
+          onClick={this.uploadImage.bind(this)}>
+            {"Upload File"}
+        </button>
       </div>
     )
   }
