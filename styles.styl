@@ -33,6 +33,7 @@ darker-grey = #4f4f4f
 grey = #D8D8D8
 light-grey = #EEE
 purp = #524763
+light-purp = #766a8a
 dark-purp = #373142
 red = #E54B4B
 teal = #82D8D8
@@ -103,6 +104,8 @@ header
     z-index: z.header
     shadow-level(2)
     clearfix()
+    img
+        height 110px
     h2
         margin 0
         font-weight 100
@@ -129,102 +132,8 @@ header
             @media only screen and (max-width: 765px)
               visibility hidden
 
-
-    img
-        height 110px
-
-p
-    color #333
-
-ul
-  padding 5px 5px 5px 5px
-.tiles
-  float left
-
-//.logo
-.page-title
-    text-transform uppercase
-    font-weight 800
-    margin-bottom 30px
-
 .category-phrase-dashboard
     text-align center
-
-.main-layout
-    lost-center 90%
-    margin-top 20px
-    +above($large)
-        lost-center 70%
-        margin-top 40px
-
-.btn, button
-    display inline-block
-    cursor pointer
-    background purp
-    color #FFF
-    text-decoration none
-    //text-transform uppercase
-    padding 5px 15px
-    border solid 3px purp
-    border-radius 2px
-    font-weight 800
-    shadow-level(1)
-    trans()
-    &:hover
-        background @background - 20
-        border-color @background
-        shadow-level(2)
-    &.btn-primary
-        background teal
-        border-color teal
-        color dark-purp
-        &:hover
-            background @background - 40
-            border-color @background
-    &.btn-deny
-        background red
-        border solid 3px @background
-        &:hover
-            background @background - 20
-            border-color @background
-    &.btn-text
-        color purp
-        background transparent
-        border solid 2px purp
-        shadow-level(0)
-        &:hover
-            background teal
-            border-color @background
-            shadow-level(1)
-    &.btn-text-dark
-        color #FFF
-        background transparent
-        border solid 2px #FFF
-        shadow-level(0)
-        &:hover
-            background #FFF
-            color dark-purp
-            border-color @background
-            shadow-level(1)
-    &.btn-confirmation
-        color black
-        background green
-        border solid 2px @background
-        &:hover
-            background @background - 20
-            border-color dark-purp
-    &.btn-cancel
-        color #FFF
-        background transparent
-        border solid 2px #FFF
-        opacity 0.4
-        shadow-level(-1)
-        &:hover
-            background red
-            color #FFF
-            opacity 1
-            shadow-level(2)
-            border-color @background
 
 input, select, textarea
     color purp
@@ -237,27 +146,17 @@ input, select, textarea
     margin-top 14px
     position relative
     outline 2px
+    .suggestionsContainer
+        text-align left
+        padding 0px 10px
+        margin-left -8px
+        margin-right -8px
+        position absolute
+        width 13.2em
+        z-index 1
+
 .suggestionsContainer
-          text-align left
-          border left 100px
-          margin-top 0px
-          padding-top 0px
-          padding 0px 10px
-          margin-left -8px
-          margin-right -8px
-          position absolute
-          //width 29.5%
-          width 13.2em
-          z-index 1
-
-
-.individualSuggestion
-          display block
-          background white
-          margin-top 0px
-          padding 4px 10px
-          border-radius 2px
-          color darker-grey
+    text-align left
 
 
 .selectedtrue
@@ -275,7 +174,78 @@ input, select, textarea
           padding 4px 10px
           border-radius 2px
           color darker-grey
-*/
+
+.phrases
+  padding-bottom 400px
+
+.tile
+  color white
+  padding 1%
+  border 1px dark-purp solid
+  margin 1%
+  background purp
+  shadow-level(1)
+  width 200px
+  height 200px
+  padding-bottom 18%
+  display inline-block
+  float left
+  text-align left
+  word-wrap normal
+  trans()
+  &:hover
+    background dark-purp
+    shadow-level(4)
+    .btn, button
+      transition visibility none
+      //visibility visible  (this is to make the delete button appear only when tile hovered over)
+      visibility none
+
+.phraseDiv
+  background light-purp
+  padding 10px 12px
+
+.phraseText
+    font-size 200%
+    word-wrap break-word
+
+.btn, button
+    float right
+    display inline-block
+    cursor pointer
+    background purp
+    color #FFF
+    text-decoration none
+    text-transform uppercase
+    padding 5px 15px
+    border solid 3px purp
+    border-radius 2px
+    font-weight 800
+    shadow-level(1)
+    trans()
+    &:hover
+        background @background - 20
+        border-color @background
+        shadow-level(2)
+    &.btn-cancel
+        visibility hidden
+        color #FFF
+        background transparent
+        border solid 2px #FFF
+        opacity 0.4
+        shadow-level(-1)
+        &:hover
+            background red
+            color #FFF
+            opacity 1
+            shadow-level(2)
+            border-color @background
+
+
+
+.panel-body
+    .form-group
+        lost-column 1/2
 
 input::-webkit-input-placeholder
     color: #ddd
@@ -285,116 +255,6 @@ input::-moz-placeholder
     color: #ddd
 input:-ms-input-placeholder
     color: #ddd
-
-/*
-.new-phrase
-    transition all 0.3s cubic-bezier(0.86, 0, 0.07, 1)
-    shadow-level(3)
-    &:hover
-        shadow-level(5)
-    label
-        background dark-purp
-        text-transform uppercase
-        font-weight 800
-        color #FFF
-        font-size 1.2em
-        padding 10px
-        display inline
-        //text-align center
-        letter-spacing 2px
-    input
-        width 100%
-        margin 0
-        font-size 1em
-        font-weight 800
-        color #333
-        border none
-        padding 20px
-        */
-
-.phrases
-    list-style none
-    padding 0
-    margin 20px 0
-    lost-center 700px
-    li
-        //background red
-        font-size 2em
-        margin-bottom 0px
-        height 100px
-        input
-            margin-right 10px
-        &.checked
-            color #CCC
-        button
-            padding 8px
-            margin-left 40px
-            line-height 0.5
-            float right
-
-.panel-body
-    .form-group
-        lost-column 1/2
-
-.side-nav
-    fixed bottom left
-    height 100px
-    width 100%
-    overflow hidden
-    background dark-purp
-    color #FFF
-    z-index: z.header
-    shadow-level(2)
-    ul
-        margin 0
-        padding 0
-        float left
-        //display flex
-        //justify-content space-between
-        list-style none
-    a
-        color #FFF
-        text-decoration none
-        padding 20px 20px
-        display block
-        text-align center
-        trans()
-        &:hover, &.active
-            background purp
-    i
-        display block
-        font-size 2em
-        margin-bottom 10px
-    +above($med)
-        height 100%
-        z-index: z.mid
-        padding 120px 0
-        fixed top left
-        width $side-nav
-        ul
-            display block
-        shadow-level(-1)
-        a
-            padding 20px 10px
-            &:hover, &.active
-                border-left 4px solid teal
-    +above($large)
-        width $side-nav-large
-        a
-            padding 20px 20px
-            &:hover, &.active
-                border-left 10px solid teal
-
-/*
-.completed
-    color #FFF
-    background teal
-    border-radius 5px
-    padding 5px
-    margin-left 20px
-    animation complete 0.6s ease
-    font-size 0.6em
-  */
 
 #login-dropdown-list
     right -1px
@@ -455,3 +315,57 @@ input:-ms-input-placeholder
 .route-appear
     opacity: 0
     animation: slideUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+
+
+/*
+                .side-nav
+                    fixed bottom left
+                    height 100px
+                    width 100%
+                    overflow hidden
+                    background dark-purp
+                    color #FFF
+                    z-index: z.header
+                    shadow-level(2)
+                    ul
+                        margin 0
+                        padding 0
+                        float left
+                        //display flex
+                        //justify-content space-between
+                        list-style none
+                    a
+                        color #FFF
+                        text-decoration none
+                        padding 20px 20px
+                        display block
+                        text-align center
+                        trans()
+                        &:hover, &.active
+                            background purp
+                    i
+                        display block
+                        font-size 2em
+                        margin-bottom 10px
+                    +above($med)
+                        height 100%
+                        z-index: z.mid
+                        padding 120px 0
+                        fixed top left
+                        width $side-nav
+                        ul
+                            display block
+                        shadow-level(-1)
+                        a
+                            padding 20px 10px
+                            &:hover, &.active
+                                border-left 4px solid teal
+                    +above($large)
+                        width $side-nav-large
+                        a
+                            padding 20px 20px
+                            &:hover, &.active
+                                border-left 10px solid teal
+
+
+                */

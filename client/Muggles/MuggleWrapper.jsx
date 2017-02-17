@@ -57,11 +57,11 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       if (phraseResultCount>=1){
         //console.log("one or more");
         results = (
-          <ul className="phrases">
-            {this.phrases({currentCategory: Session.get("currentCategory")}).map( (phrase)=>{
-              return <PhraseSingle key={phrase._id} phrase={phrase} />
-            })}
-          </ul>
+            <div>
+              {this.phrases({currentCategory: Session.get("currentCategory")}).map( (phrase)=>{
+                return <PhraseSingle key={phrase._id} phrase={phrase} />
+              })}
+            </div>
         )
       }
       else {
@@ -85,7 +85,9 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     return(
       <div className="category-phrase-dashboard">
         <h1>You know you're a &nbsp; <CategoryForm /> {userPrompt}</h1>
+        <div className = "phrases">
         {results}
+        </div>
       </div>
     )
     //whenever you use brackets like this inside of jsx it's to say "this is javascript"

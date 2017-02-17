@@ -12,21 +12,21 @@ export default class PhraseSingle extends Component {
 
   render(){
     return (
-      <div className="tiles">
-          <li>
-            {/*
-            <input type="checkbox"
-              readOnly={true}
-              checked={this.props.phrase.complete}
-              onClick={this.toggleChecked.bind(this)} />
-              */}
-              <button className="btn-cancel"
-                onClick={this.deletePhrase.bind(this)}>
-                &times;
-              </button>
-            {this.props.phrase.text}
-          </li>
-      </div>
+        <div className = "tile">
+          {/*
+          <input type="checkbox"
+            readOnly={true}
+            checked={this.props.phrase.complete}
+            onClick={this.toggleChecked.bind(this)} />
+            */}
+            <div className = "phraseDiv">
+              <p1 className = "phraseText">{this.props.phrase.text}</p1>
+            </div>
+            <button className="btn-cancel"
+              onClick={this.deletePhrase.bind(this)}>
+              &times;
+            </button>
+        </div>
     )
   }
 }
