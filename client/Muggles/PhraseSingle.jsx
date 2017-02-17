@@ -11,6 +11,8 @@ export default class PhraseSingle extends Component {
   }
 
   render(){
+    var imageUrl = this.props.phrase.imageUrl;
+    console.log(this.props.phrase);
     return (
         <div className = "tile">
           {/*
@@ -22,6 +24,7 @@ export default class PhraseSingle extends Component {
             <div className = "phraseDiv">
               <p1 className = "phraseText">{this.props.phrase.text}</p1>
             </div>
+            <img src={imageUrl} alt="Image missing"/>
             <button className="btn-cancel"
               onClick={this.deletePhrase.bind(this)}>
               &times;
