@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-//imports everything from the node_modules/react folder and the node_modules/react-dom folder
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import CategoryForm from './CategoryForm.jsx';
 import PhraseForm from './PhraseForm.jsx';
