@@ -20,6 +20,11 @@ export default class CategoryFormI extends Component {
   }
 
   render(){
+    //these three variables are for feeding the AutoSuggest component in the return()
+    /*var autosuggestFood = this.state.food;
+    var keyCount = this.state.keyCount;
+    var autosuggestActive = this.state.suggestionsOn;*/
+    //////
     return (
             <form className="select-category"
               onSubmit={this.selectCategory.bind(this)}
@@ -27,6 +32,7 @@ export default class CategoryFormI extends Component {
             <input type="text"
               ref="currentCategory"
               placeholder="Illustrator" />
+            //<AutoSuggest input={autosuggestFood} count={keyCount} active={autosuggestActive}/>
             </form>
         )
     }

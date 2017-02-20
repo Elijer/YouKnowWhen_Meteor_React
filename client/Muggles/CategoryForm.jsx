@@ -7,13 +7,15 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
     constructor(props) {
       super(props);
-      this.state = {value: '', suggestions: '', selectedSuggestions: '', suggestionsOn: false, food: '', keyCount: 0};
+      this.state = {suggestionsOn: false, food: '', keyCount: 0};
       //binds handleChange function to any event of the category input bar
       this.handleChange = this.handleChange.bind(this);
       //bings handleKeyPress event to any keyboard event when input is focused on
       this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
+    //handleKeyPress() and handleChange() are both for feeding the AutoSuggest component
+    //both channel their data through state.
     handleKeyPress(e) {
       if (e.keyCode == '40') {
         var countIncrement = this.state.keyCount+1;
@@ -21,8 +23,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       }
     }
 
-    //handles changes in the upper category form input
-    handleChange(e){
+    handleChange(e){    //handles changes in the upper category form input
       this.setState({suggestionsOn: true, keyCount: 0});
       var input = e.target.value.trim();
       !input ? this.setState({food: ''}):this.setState({food: input})
@@ -35,12 +36,11 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       Session.set("currentCategory", text);
       var dbText = Categories.findOne({text: text});
       //console.log(dbText===text);
-      if (!dbText){
-      Modal.show("categoryModal");
-      }
+      if (!dbText) Modal.show("categoryModal");
     }
 
   render(){
+    //these three variables are for feeding the AutoSuggest component in the return()
     var autosuggestFood = this.state.food;
     var keyCount = this.state.keyCount;
     var autosuggestActive = this.state.suggestionsOn;
