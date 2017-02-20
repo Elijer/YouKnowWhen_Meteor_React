@@ -5,9 +5,24 @@ export default class PhraseFormI extends Component {
 
   addPhrase(event){
     event.preventDefault();
+    var dis = this;
     var text = this.refs.newPhrase.value.trim();
-    Meteor.call('addPhrase', text, Session.get("currentCategory"));
-    //this.refs.phrase.value = "";
+    var currentCat = Session.get("currentCategory");
+    var dbText = Phrases.findOne({currentCategory: currentCat, text: text});
+    Meteor.call("isAppropro", text, function(err, data){
+      if (err){console.log("error")}
+      if (data === false){
+        Modal.show("rejectionModal");
+        dis.refs.phrase.value = "";
+      } else {
+        if (!dbText){
+          Modal.show("phraseSubmission");
+          Meteor.call('addPhrase', text, currentCat);
+        } else {
+        Modal.show("repeatPhrase");
+        }
+      }
+    });
   }
 
   render(){
