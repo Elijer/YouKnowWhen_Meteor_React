@@ -60,8 +60,12 @@ export default class IllustratorWrapper extends TrackerReact(React.Component) {
         results = (
           <ul className="phrases">
             {this.phrases({currentCategory: Session.get("currentCategory")}).map( (phrase)=>{
-              return <PhraseSingleI key={phrase._id} phrase={phrase} />
-            })}
+              //the illustrators page only return categories without images
+                if(!phrase.imageUrl){
+                  return <PhraseSingleI key={phrase._id} phrase={phrase} />
+                }
+              }
+            )}
           </ul>
         )
       }

@@ -58,8 +58,11 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         results = (
             <div>
               {this.phrases({currentCategory: Session.get("currentCategory")}).map( (phrase)=>{
-                return <PhraseSingle key={phrase._id} phrase={phrase} />
-              })}
+                  if(phrase.imageUrl){
+                    return <PhraseSingle key={phrase._id} phrase={phrase} />
+                  }
+                }
+              )}
             </div>
         )
       }
