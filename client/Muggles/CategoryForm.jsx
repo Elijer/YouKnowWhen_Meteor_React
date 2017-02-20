@@ -20,52 +20,12 @@ export default class CategoryForm extends TrackerReact(React.Component) {
         this.setState({keyCount: countIncrement});
       }
     }
-      /////////
-    /*  if (e.keyCode == '38') {
-        console.log("up");
-        var array = this.state.selectedSuggestions;
-
-        for (var i = array.length-1; i>=0; i--){
-          if(i<=array.length-2){
-            tempArray[i] = array[i+1];
-          } else {
-            tempArray[i] = array[0];
-          }
-        }
-
-        this.setState({selectedSuggestions: tempArray});
-      }
-        //this.setState({selectedSuggestions: countIncrement});
-        for (var i = array.length-1; i >= 0; i--){
-          if(i>0){
-            tempArray[i] = array[i-1];
-          } else {
-            tempArray[i] = array[array.length-1]
-          }
-        }
-      }
-
-      if (tempArray[0] === true){
-        e.target.value = "";
-      } else {
-        for (var i = 0; i <= tempArray.length; i++){
-          if(tempArray[i] === true){
-              e.target.value = this.state.suggestions[i-1];
-              e.target.setSelectionRange(11,11);
-            }
-          }
-      }
-    }*/
 
     //handles changes in the upper category form input
     handleChange(e){
       this.setState({suggestionsOn: true, keyCount: 0});
       var input = e.target.value.trim();
-      if(!input){
-        this.setState({food: ''})
-      } else {
-        this.setState({food: input})
-      }
+      !input ? this.setState({food: ''}):this.setState({food: input})
     }
 
     selectCategory(event){
