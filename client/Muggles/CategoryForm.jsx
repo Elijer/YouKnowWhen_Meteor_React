@@ -7,7 +7,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
     constructor(props) {
       super(props);
-      this.state = {value: '', suggestions: '', selectedSuggestions: '', suggestionsOn: false, food: ''};
+      this.state = {value: '', suggestions: '', selectedSuggestions: '', suggestionsOn: false, food: '', keyCount: 0};
       //binds handleChange function to any event of the category input bar
       this.handleChange = this.handleChange.bind(this);
       //bings handleKeyPress event to any keyboard event when input is focused on
@@ -15,11 +15,13 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     }
 
     handleKeyPress(e) {
-      //console.log('up.');
-      tempArray = [];
-      var array = this.state.selectedSuggestions;
+      if (e.keyCode == '40') {
+        var countIncrement = this.state.keyCount+1;
+        this.setState({keyCount: countIncrement});
+      }
+    }
       /////////
-      /*if (e.keyCode == '38') {
+    /*  if (e.keyCode == '38') {
         console.log("up");
         var array = this.state.selectedSuggestions;
 
@@ -32,9 +34,8 @@ export default class CategoryForm extends TrackerReact(React.Component) {
         }
 
         this.setState({selectedSuggestions: tempArray});
-      }*/
-      if (e.keyCode == '40') {
-        console.log("down");
+      }
+        //this.setState({selectedSuggestions: countIncrement});
         for (var i = array.length-1; i >= 0; i--){
           if(i>0){
             tempArray[i] = array[i-1];
@@ -42,7 +43,6 @@ export default class CategoryForm extends TrackerReact(React.Component) {
             tempArray[i] = array[array.length-1]
           }
         }
-        this.setState({selectedSuggestions: tempArray});
       }
 
       if (tempArray[0] === true){
@@ -55,49 +55,17 @@ export default class CategoryForm extends TrackerReact(React.Component) {
             }
           }
       }
-    }
+    }*/
 
     //handles changes in the upper category form input
-    handleChange(e) {
-      this.setState({suggestionsOn: true});
+    handleChange(e){
+      this.setState({suggestionsOn: true, keyCount: 0});
       var input = e.target.value.trim();
-
       if(!input){
         this.setState({food: ''})
       } else {
         this.setState({food: input})
       }
-
-      var reg = new RegExp('^' + input, 'ig'); // creates regular expression denoting all truncations of input
-      var numOfResults = 5;
-      var autoCompleteQuery = Categories.find({text: reg}, {limit:numOfResults}).fetch();
-      //create empty arrays to push data into
-      var results = [];
-      var selectedSuggestions = [];
-      selectedSuggestions[0] = true;
-      //fill the results and selectedSuggestions arrays with user-typed data
-      autoCompleteQuery.map(
-        function(i, index){
-          results.push((i.text.toString()));
-          selectedSuggestions[index+1] = false;
-        }
-      );
-      //if input, change states to input. if not, set states to "".
-      if (!input){
-        this.setState({suggestions: "", selectedSuggestions: ""});
-      } else {
-        this.setState({suggestions: results, selectedSuggestions: selectedSuggestions});
-      }
-    }//end of handChange(){}
-
-    categories(searchKey){
-      return Categories.find(searchKey).fetch();
-    }
-
-    resetForm(){
-      event.preventDefault();
-      var selected = this.state.selectedSuggestions;
-      console.log("asdfasf");
     }
 
     selectCategory(event){
@@ -114,26 +82,8 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
   render(){
     var autosuggestFood = this.state.food;
-    var selectedSuggestions = this.state.selectedSuggestions;
+    var keyCount = this.state.keyCount;
     var autosuggestActive = this.state.suggestionsOn;
-    //console.log(this.state.food);
-    //to avid throwing an error, I have to make sure that state.suggesitons HAS something there
-    //state.suggestionsOn is set during relevant events
-    if(this.state.suggestionsOn === true && this.state.suggestions){
-      var selected = this.state.selectedSuggestions;
-      var suggestionsArray = this.state.suggestions;
-      suggestions = (
-          <div className="suggestionsContainer">
-            {suggestionsArray.map(function(suggestion, index){
-              return <p3 key={index} className={"selected" + selected[index+1]}>
-                {suggestion}
-                      </p3>
-              })}
-          </div>
-        );
-    } else {
-      suggestions=(<div></div>);
-    }
 
     return (
             <form className="select-category"
@@ -144,8 +94,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
                 placeholder="Web designer"
                 onChange={this.handleChange}
                 onKeyDown={this.handleKeyPress}/>
-              {suggestions}
-              <AutoSuggest input={autosuggestFood} selected={selectedSuggestions} active={autosuggestActive}/>
+              <AutoSuggest input={autosuggestFood} count={keyCount} active={autosuggestActive}/>
               </label>
           </form>
         )
@@ -172,3 +121,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     this.refs.currentCategory.blur();
   }
   */}
+
+{  /*categories(searchKey){
+    return Categories.find(searchKey).fetch();
+  }*/}

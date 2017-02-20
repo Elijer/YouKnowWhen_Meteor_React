@@ -6,39 +6,59 @@ export default class AutoSuggest extends TrackerReact(React.Component) {
 
   constructor() {
     super();
-    this.state = {input: ''}
+    this.state = {numOfResults: 5}
   }
 
-  goFishing(input){
+  remainder(count){
+    var divisor = this.state.numOfResults+1;
+    var position = count % divisor;
+    return position;
+  }
+
+  goFishing(input, selectedPosition){
     //searches Categories database for results that start with 'input'
     if(input){
       var results = []; //array for results of db query
+      var selectionArray = [];
+      selectionArray[0] = false;
       var reg = new RegExp('^' + input, 'ig'); //creates RegExp needed for truncation query
-      var numOfResults = 5; //caps # of results returned
+      var numOfResults = this.state.numOfResults; //caps # of results returned
       var autoCompleteQuery = Categories.find({text: reg}, {limit:numOfResults}).fetch(); //db query
       autoCompleteQuery.map( //fills array with each result
         function(i, index){
           results.push((i.text.toString()));
-          //selectedSuggestions[index+1] = false;
+          selectionArray.push(false);
         }
       );
-      return results;
+      selectionArray[selectedPosition] = true;
+      var suggestions = {
+        results: results,
+        selectionArray: selectionArray
+      }
+      return suggestions;
     } else {
       }
   }
 
   render(){
     var value = this.props.input;
-    var selectionArray = this.props.selected;
     var componentActive = this.props.active;
-    var results = this.goFishing(value);
-
+    var position = this.remainder(this.props.count);
+    console.log(position);
+    var suggestions = this.goFishing(value, position);
+    if (suggestions){
+      if (suggestions.results){
+        var results = suggestions.results;
+        var selectionArray = suggestions.selectionArray;
+      }
+    }
     if(results && componentActive){
       var suggestionsArray = results;
       suggestions = (
           <div className="suggestionsContainer">
             {suggestionsArray.map(function(suggestion, index){
-              return <p3 key={index} className={"selected" + selectionArray[index+1]}>
+              //return <p3 key={index} className={"selected" + selectionArray[index+1]}>
+              return <p3 key={index} className={"selected" + selectionArray[index]}>
                 {suggestion}
                     </p3>
               })}
