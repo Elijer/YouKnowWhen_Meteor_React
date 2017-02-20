@@ -20,13 +20,15 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       if (e.keyCode == '40') {
         var countIncrement = this.state.keyCount+1;
         this.setState({keyCount: countIncrement});
+        e.target.value = Session.get("currentSelection");
       }
     }
 
     handleChange(e){    //handles changes in the upper category form input
       this.setState({suggestionsOn: true, keyCount: 0});
       var input = e.target.value.trim();
-      !input ? this.setState({food: ''}):this.setState({food: input})
+      !input ? this.setState({food: ''}):this.setState({food: input});
+      Session.set("reactiveCategory", input);
     }
 
     selectCategory(event){

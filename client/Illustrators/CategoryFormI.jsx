@@ -20,6 +20,7 @@ export default class CategoryFormI extends TrackerReact(React.Component) {
     if (e.keyCode == '40') {
       var countIncrement = this.state.keyCount+1;
       this.setState({keyCount: countIncrement});
+      e.target.value = Session.get("currentSelection");
     }
   }
 

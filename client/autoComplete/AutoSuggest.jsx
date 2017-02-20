@@ -31,6 +31,7 @@ export default class AutoSuggest extends TrackerReact(React.Component) {
         }
       );
       selectionArray[selectedPosition] = true;
+      Session.set("currentSelection", results[selectedPosition]);
       var suggestions = {
         results: results,
         selectionArray: selectionArray

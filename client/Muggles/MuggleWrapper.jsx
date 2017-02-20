@@ -50,14 +50,14 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       )
     }
 
-    let phraseResultCount = Phrases.find({currentCategory: Session.get("currentCategory")}).count();
+    let phraseResultCount = Phrases.find({currentCategory: Session.get("reactiveCategory")}).count();
     //console.log(Phrases.find({currentCategory: Session.get("currentCategory")}).count());
-    if (Session.get("currentCategory")){
+    if (Session.get("reactiveCategory")){
       if (phraseResultCount>=1){
         //console.log("one or more");
         results = (
             <div>
-              {this.phrases({currentCategory: Session.get("currentCategory")}).map( (phrase)=>{
+              {this.phrases({currentCategory: Session.get("reactiveCategory")}).map( (phrase)=>{
                   if(phrase.imageUrl){
                     return <PhraseSingle key={phrase._id} phrase={phrase} />
                   }
