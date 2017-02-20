@@ -18,7 +18,8 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       tempArray = [];
       var array = this.state.selectedSuggestions;
       /////////
-      if (e.keyCode == '38') {
+      /*if (e.keyCode == '38') {
+        console.log("up");
         var array = this.state.selectedSuggestions;
 
         for (var i = array.length-1; i>=0; i--){
@@ -30,8 +31,9 @@ export default class CategoryForm extends TrackerReact(React.Component) {
         }
 
         this.setState({selectedSuggestions: tempArray});
-      }
-      else if (e.keyCode == '40') {
+      }*/
+      if (e.keyCode == '40') {
+        console.log("down");
         for (var i = array.length-1; i >= 0; i--){
           if(i>0){
             tempArray[i] = array[i-1];
