@@ -52,14 +52,14 @@ export default class IllustratorWrapper extends TrackerReact(React.Component) {
       )
     }
 
-    let phraseResultCount = Phrases.find({currentCategory: Session.get("currentCategory")}).count();
+    let phraseResultCount = Phrases.find({currentCategory: Session.get("reactiveCategory")}).count();
     //console.log(Phrases.find({currentCategory: Session.get("currentCategory")}).count());
-    if (Session.get("currentCategory")){
+    if (Session.get("reactiveCategory")){
       if (phraseResultCount>=1){
         //console.log("one or more");
         results = (
           <ul className="phrases">
-            {this.phrases({currentCategory: Session.get("currentCategory")}).map( (phrase)=>{
+            {this.phrases({currentCategory: Session.get("reactiveCategory")}).map( (phrase)=>{
               //the illustrators page only return categories without images
                 if(!phrase.imageUrl){
                   return <PhraseSingleI key={phrase._id} phrase={phrase} />

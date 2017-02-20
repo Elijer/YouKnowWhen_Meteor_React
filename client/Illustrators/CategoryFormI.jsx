@@ -27,11 +27,13 @@ export default class CategoryFormI extends TrackerReact(React.Component) {
   handleChange(e){    //handles changes in the upper category form input
     this.setState({suggestionsOn: true, keyCount: 0});
     var input = e.target.value.trim();
-    !input ? this.setState({food: ''}):this.setState({food: input})
+    !input ? this.setState({food: ''}):this.setState({food: input});
+    Session.set("reactiveCategory", input);
   }
 
   selectCategory(event){
     event.preventDefault();
+    this.setState({suggestionsOn: false});
     var text = this.refs.currentCategory.value.trim();
     Session.set("currentCategory", text);
     var dbText = Categories.findOne({text: text});
