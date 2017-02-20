@@ -46,6 +46,9 @@ export default class CategoryFormI extends TrackerReact(React.Component) {
   }
 
   render(){
+    var placeholder;
+    var currentCat = Session.get("currentCategory");
+    currentCat ? placeholder = currentCat:placeholder = "Illustrator"
     //these three variables are for feeding the AutoSuggest component in the return()
     var autosuggestFood = this.state.food;
     var keyCount = this.state.keyCount;
@@ -60,7 +63,7 @@ export default class CategoryFormI extends TrackerReact(React.Component) {
 
                 <input type="text"
                   ref="currentCategory"
-                  placeholder="Illustrator"
+                  placeholder={placeholder}
                   onChange={this.handleChange}
                   onKeyDown={this.handleKeyPress}/>
 
