@@ -114,6 +114,8 @@ export default class CategoryForm extends TrackerReact(React.Component) {
 
   render(){
     var autosuggestFood = this.state.food;
+    var selectedSuggestions = this.state.selectedSuggestions;
+    var autosuggestActive = this.state.suggestionsOn;
     //console.log(this.state.food);
     //to avid throwing an error, I have to make sure that state.suggesitons HAS something there
     //state.suggestionsOn is set during relevant events
@@ -143,7 +145,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
                 onChange={this.handleChange}
                 onKeyDown={this.handleKeyPress}/>
               {suggestions}
-              <AutoSuggest input={autosuggestFood}/>
+              <AutoSuggest input={autosuggestFood} selected={selectedSuggestions} active={autosuggestActive}/>
               </label>
           </form>
         )

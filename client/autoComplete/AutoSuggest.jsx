@@ -9,10 +9,6 @@ export default class AutoSuggest extends TrackerReact(React.Component) {
     this.state = {input: ''}
   }
 
-  addA(input){
-    console.log(input + "A");
-  }
-
   goFishing(input){
     //searches Categories database for results that start with 'input'
     if(input){
@@ -33,17 +29,16 @@ export default class AutoSuggest extends TrackerReact(React.Component) {
 
   render(){
     var value = this.props.input;
-    var selection = this.props.selections;
-    console.log(selection);
-    //console.log(this.goFishing(value));
+    var selectionArray = this.props.selected;
+    var componentActive = this.props.active;
     var results = this.goFishing(value);
 
-    if(results){
+    if(results && componentActive){
       var suggestionsArray = results;
       suggestions = (
           <div className="suggestionsContainer">
             {suggestionsArray.map(function(suggestion, index){
-              return <p3 key={index} className={"selectedTest"}>
+              return <p3 key={index} className={"selected" + selectionArray[index+1]}>
                 {suggestion}
                     </p3>
               })}
