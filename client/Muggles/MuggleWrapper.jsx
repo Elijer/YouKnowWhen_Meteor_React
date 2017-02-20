@@ -36,13 +36,16 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
 
   render(){
     let userPrompt;
-    if (Session.get("currentCategory")){
-      userPrompt = (
-        <span>
-          when...
-          <PhraseForm />
-        </span>
-      )
+    var currentCat = Session.get("currentCategory");
+    var reactiveCat = Session.get("reactiveCategory");
+    if (currentCat){
+      if(currentCat === reactiveCat)
+        userPrompt = (
+          <span>
+            when...
+            <PhraseForm />
+          </span>
+        )
     }
     else {
       userPrompt = (
@@ -50,14 +53,14 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       )
     }
 
-    let phraseResultCount = Phrases.find({currentCategory: Session.get("reactiveCategory")}).count();
+    let phraseResultCount = Phrases.find({currentCategory: reactiveCat}).count();
     //console.log(Phrases.find({currentCategory: Session.get("currentCategory")}).count());
-    if (Session.get("reactiveCategory")){
+    if (reactiveCat){
       if (phraseResultCount>=1){
         //console.log("one or more");
         results = (
             <div>
-              {this.phrases({currentCategory: Session.get("reactiveCategory")}).map( (phrase)=>{
+              {this.phrases({currentCategory: reactiveCat}).map( (phrase)=>{
                   if(phrase.imageUrl){
                     return <PhraseSingle key={phrase._id} phrase={phrase} />
                   }

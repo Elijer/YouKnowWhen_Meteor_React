@@ -37,14 +37,18 @@ export default class IllustratorWrapper extends TrackerReact(React.Component) {
   //this.addPhrase
 
   render(){
+    var currentCat = Session.get("currentCategory");
+    var reactiveCat = Session.get("reactiveCategory");
     let userPrompt;
-    if (Session.get("currentCategory")){
-      userPrompt = (
-        <span>
-          when...
-          <PhraseFormI />
-        </span>
-      )
+    if (currentCat){
+      if(currentCat === reactiveCat){
+        userPrompt = (
+          <span>
+            when...
+            <PhraseFormI />
+          </span>
+        )
+      }
     }
     else {
       userPrompt = (
