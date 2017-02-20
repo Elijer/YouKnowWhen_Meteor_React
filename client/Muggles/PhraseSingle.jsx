@@ -12,7 +12,7 @@ export default class PhraseSingle extends Component {
 
   render(){
     var imageUrl = this.props.phrase.imageUrl;
-    console.log(this.props.phrase);
+    //console.log(this.props.phrase);
     return (
         <div className = "tile">
           {/*

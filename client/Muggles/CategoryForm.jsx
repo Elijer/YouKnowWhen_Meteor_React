@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import AutoSuggest from '../autoComplete/AutoSuggest.jsx';
 
 export default class CategoryForm extends TrackerReact(React.Component) {
 
     constructor(props) {
       super(props);
-      this.state = {value: '', suggestions: '', selectedSuggestions: '', suggestionsOn: false};
+      this.state = {value: '', suggestions: '', selectedSuggestions: '', suggestionsOn: false, food: ''};
       //binds handleChange function to any event of the category input bar
       this.handleChange = this.handleChange.bind(this);
       //bings handleKeyPress event to any keyboard event when input is focused on
@@ -60,6 +61,13 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     handleChange(e) {
       this.setState({suggestionsOn: true});
       var input = e.target.value.trim();
+
+      if(!input){
+        this.setState({food: ''})
+      } else {
+        this.setState({food: input})
+      }
+
       var reg = new RegExp('^' + input, 'ig'); // creates regular expression denoting all truncations of input
       var numOfResults = 5;
       var autoCompleteQuery = Categories.find({text: reg}, {limit:numOfResults}).fetch();
@@ -105,6 +113,8 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     }
 
   render(){
+    var autosuggestFood = this.state.food;
+    //console.log(this.state.food);
     //to avid throwing an error, I have to make sure that state.suggesitons HAS something there
     //state.suggestionsOn is set during relevant events
     if(this.state.suggestionsOn === true && this.state.suggestions){
@@ -133,6 +143,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
                 onChange={this.handleChange}
                 onKeyDown={this.handleKeyPress}/>
               {suggestions}
+              <AutoSuggest input={autosuggestFood}/>
               </label>
           </form>
         )
