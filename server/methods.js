@@ -22,10 +22,17 @@ Meteor.methods({
   deletePhrase(id){
     Phrases.remove(id)
   },
+  isAppropro(input){
+    if(blacklistPass(input) === false){
+      return false;
+    } else {
+      return true;
+    }
+  },
   addCategory(categoryName){
-    Categories.insert({
-      text: categoryName,
-      createdAt: new Date()
-    })
+      Categories.insert({
+        text: categoryName,
+        createdAt: new Date()
+      })
   }
 });
