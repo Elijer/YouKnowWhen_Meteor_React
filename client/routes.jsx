@@ -4,6 +4,8 @@ import {mount} from 'react-mounter';
 import {MainLayout} from './layouts/MainLayout.jsx';
 import MuggleWrapper from './Muggles/MuggleWrapper.jsx';
 import IllustratorWrapper from './Illustrators/IllustratorWrapper.jsx';
+import About from './About.jsx';
+import Contact from './Contact.jsx';
 
 FlowRouter.route('/', {
   action(){
@@ -17,6 +19,22 @@ FlowRouter.route('/forIllustrators', {
   action(){
     mount(MainLayout, {
         content: (<IllustratorWrapper />)
+    });
+  }
+});
+
+FlowRouter.route('/About', {
+  action(){
+    mount(MainLayout, {
+        content: (<About />)
+    });
+  }
+});
+
+FlowRouter.route('/Contact', {
+  action(){
+    mount(MainLayout, {
+        content: (<Contact />)
     });
   }
 });
