@@ -34,14 +34,20 @@ export default class CategoryFormI extends TrackerReact(React.Component) {
   selectCategory(event){
     event.preventDefault();
     this.setState({suggestionsOn: false});
+    var dis = this;
     var text = this.refs.currentCategory.value.trim();
     Session.set("currentCategory", text);
     var dbText = Categories.findOne({text: text});
-    //Modal.show("categoryModal");
-    //console.log(dbText===text);
-    if (!dbText){
-    Modal.show("categoryModal");
-    }
+    Meteor.call("isAppropro", text, function(err, data){
+      if (err){console.log("error")}
+      if (data === false){
+        Modal.show("rejectionModal");
+        Session.set("currentCategory", "");
+        dis.refs.currentCategory.value = '';
+      } else {
+        if (!dbText) Modal.show("categoryModal");
+      }
+    });
   }
 
   blurTest(event){
