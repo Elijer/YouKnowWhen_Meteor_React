@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import AutoSuggest from '../autoComplete/AutoSuggest.jsx';
-import AutoSuggest2 from '../autoComplete/AutoSuggest2.jsx';
 
 export default class CategoryForm extends TrackerReact(React.Component) {
 
@@ -69,7 +68,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
                 placeholder={placeholder}
                 onChange={this.handleChange}
                 onKeyDown={this.handleKeyPress}/>
-              <AutoSuggest2 input={autosuggestFood} count={keyCount} active={autosuggestActive}/>
+              <AutoSuggest input={autosuggestFood} count={keyCount} active={autosuggestActive}/>
               </label>
           </form>
         )
