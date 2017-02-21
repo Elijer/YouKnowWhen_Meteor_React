@@ -45,7 +45,7 @@ export default class AutoSuggest extends TrackerReact(React.Component) {
     var value = this.props.input;
     var componentActive = this.props.active;
     var position = this.remainder(this.props.count);
-    console.log(position);
+    ////////////////////////////////////////////////////////////////////console.log(position);
     var suggestions = this.goFishing(value, position);
     if (suggestions){
       if (suggestions.results){
