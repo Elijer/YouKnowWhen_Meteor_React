@@ -39,6 +39,9 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       this.setState({suggestionsOn: false});
       var dis = this;
       var text = this.refs.currentCategory.value.trim().toLowerCase();
+      if (text === ""){
+        return;
+      } else {
       Session.set("currentCategory", text);
       var dbText = Categories.findOne({text: text});
       Meteor.call("isAppropro", text, function(err, data){
@@ -51,6 +54,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
           if (!dbText) Modal.show("categoryModal");
         }
       });
+      }
     }
 
   render(){
