@@ -5,9 +5,6 @@ import CategoryForm from './CategoryForm.jsx';
 import PhraseForm from './PhraseForm.jsx';
 import PhraseSingle from './PhraseSingle.jsx';
 
-Phrases = new Mongo.Collection("phrases");
-Categories = new Mongo.Collection("categories");
-
 export default class MuggleWrapper extends TrackerReact(React.Component) {
   constructor(){
     super();
