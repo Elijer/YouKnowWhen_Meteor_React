@@ -1,9 +1,13 @@
-1. blacklist
+1. Avoid repeat data entries and possibly just
+look into schemas and things for
+database entry cause that's where a lot of problems
+could arise
 2. caps non-sensitive
 3. work on banners
 4. should include a banner that says "press enter to contribute to this category"
 5. "Phrase added" banner would be good.
 6. Prevent phrase copies from being added
+7. sort autosuggest phrases by the number of results
 
 
 styling ideas

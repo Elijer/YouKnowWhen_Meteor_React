@@ -3,11 +3,11 @@
     "retard",
     "nigger",
     "faggot",
-    "lump",
-    "radenga",
-    "mushroom",
-    "cameltoe"
-  ];
+    "chink",
+    "kike",
+    "cunt",
+    "spic",
+    ];
 
   blacklistPass = function(string){
     var passTest = true;

@@ -55,7 +55,6 @@ export default class AutoSuggest extends TrackerReact(React.Component) {
       if (input && componentActive){
         var queryResult = this.goFish(input);
         var resultsLength = queryResult.length;
-        console.log(queryResult);
         var keyCount = this.props.count;
         var positionAutoFill = this.getPosition(keyCount, resultsLength, true);
         var positionSelectionArray = this.getPosition(keyCount, resultsLength, false);

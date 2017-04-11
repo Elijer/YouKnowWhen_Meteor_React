@@ -21,6 +21,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
         var countIncrement = this.state.keyCount+1;
         this.setState({keyCount: countIncrement});
         e.target.value = Session.get("currentSelection");
+        Session.set("reactiveCategory", e.target.value);
       }
     }
 
@@ -29,6 +30,8 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       var input = e.target.value.trim();
       !input ? this.setState({food: ''}):this.setState({food: input});
       Session.set("reactiveCategory", input);
+      //console.log(e);
+      //so it looks like my problem is that putting stuff in doesn't trigger a change.
     }
 
     selectCategory(event){
