@@ -3,8 +3,8 @@ import ReactDom from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import AutoSuggest from '../autoComplete/AutoSuggest.jsx';
 
-
 export default class CategoryFormI extends TrackerReact(React.Component) {
+
   constructor(props) {
     super(props);
     this.state = {suggestionsOn: false, food: '', keyCount: 0};
@@ -21,6 +21,7 @@ export default class CategoryFormI extends TrackerReact(React.Component) {
       var countIncrement = this.state.keyCount+1;
       this.setState({keyCount: countIncrement});
       e.target.value = Session.get("currentSelection");
+      Session.set("reactiveCategory", e.target.value);
     }
   }
 

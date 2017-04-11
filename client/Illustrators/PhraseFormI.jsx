@@ -7,6 +7,9 @@ export default class PhraseFormI extends Component {
     event.preventDefault();
     var dis = this;
     var text = this.refs.newPhrase.value.trim();
+    if(text === ''){
+      return;
+    } else {
     var currentCat = Session.get("currentCategory");
     var dbText = Phrases.findOne({currentCategory: currentCat, text: text});
     Meteor.call("isAppropro", text, function(err, data){
@@ -23,6 +26,7 @@ export default class PhraseFormI extends Component {
         }
       }
     });
+    }
   }
 
   render(){

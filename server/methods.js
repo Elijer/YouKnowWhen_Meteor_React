@@ -1,7 +1,7 @@
 Meteor.methods({
   addPhrase(phrase, categoryName) {
     Phrases.insert({
-      text: phrase,
+      text: phrase.toLowerCase(),
       currentCategory: categoryName,
       complete: false,
       createdAt: new Date(),
