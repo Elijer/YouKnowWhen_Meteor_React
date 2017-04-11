@@ -36,6 +36,9 @@ export default class CategoryFormI extends TrackerReact(React.Component) {
     this.setState({suggestionsOn: false});
     var dis = this;
     var text = this.refs.currentCategory.value.trim();
+    if (text === ''){
+      return;
+    } else {
     Session.set("currentCategory", text);
     var dbText = Categories.findOne({text: text});
     Meteor.call("isAppropro", text, function(err, data){
@@ -48,6 +51,7 @@ export default class CategoryFormI extends TrackerReact(React.Component) {
         if (!dbText) Modal.show("categoryModal");
       }
     });
+    }
   }
 
   blurTest(event){

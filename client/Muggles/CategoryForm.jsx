@@ -38,7 +38,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       event.preventDefault();
       this.setState({suggestionsOn: false});
       var dis = this;
-      var text = this.refs.currentCategory.value.trim();
+      var text = this.refs.currentCategory.value.trim().toLowerCase();
       Session.set("currentCategory", text);
       var dbText = Categories.findOne({text: text});
       Meteor.call("isAppropro", text, function(err, data){

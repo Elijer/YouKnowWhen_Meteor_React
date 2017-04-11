@@ -31,7 +31,7 @@ Meteor.methods({
   },
   addCategory(categoryName){
       Categories.insert({
-        text: categoryName,
+        text: categoryName.toLowerCase(),
         createdAt: new Date()
       })
   }

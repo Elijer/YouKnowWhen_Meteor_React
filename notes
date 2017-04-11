@@ -1,3 +1,18 @@
+1. Submission validation
+Category: Current Category, Phrase: Current Phrase. Are you happy with your submission? 'Yes, Submit!’  'Actually No’
+Repeat categories not allowed caps blind
+trim off any extra spaces at end or beginning
+empty submissions not allowed
+just use a schema maybe
+Finalize and include actual blacklist
+"Phrase added! go to the illustrators tab to see your new phrase, or press here” banner
+A little more direction for clarity
+Do not show autosuggestions that are a perfect match to current input. That’s unnecessary
+input should still be in input box when page switches from Illustrators to Home and vice versa
+
+
+
+
 1. Avoid repeat data entries and possibly just
 look into schemas and things for
 database entry cause that's where a lot of problems

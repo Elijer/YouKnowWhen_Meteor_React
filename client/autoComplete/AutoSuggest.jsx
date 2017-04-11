@@ -34,11 +34,13 @@ export default class AutoSuggest extends TrackerReact(React.Component) {
     return selectionArray;
   }
 
-  buildList(suggestionsArray, selectionArray){
+  buildList(suggestionsArray, selectionArray, input){
     suggestions = (
         <div className="suggestionsContainer">
           {suggestionsArray.map(function(suggestion, index){
             if (index === 0){
+              return null;
+            } else if (suggestion === input){
               return null;
             } else {
               return <p3 key={index} className={"selected" + selectionArray[index]}> {suggestion} </p3>
@@ -60,7 +62,7 @@ export default class AutoSuggest extends TrackerReact(React.Component) {
         var positionSelectionArray = this.getPosition(keyCount, resultsLength, false);
         this.setAutoFill(queryResult[positionAutoFill]);
         var selectionArray = this.buildSelectionArray(queryResult, positionSelectionArray);
-        var list = this.buildList(queryResult, selectionArray);
+        var list = this.buildList(queryResult, selectionArray, input);
         return list;
       } else {
         return null;
