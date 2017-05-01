@@ -19,7 +19,11 @@ export default class AutoSuggest extends TrackerReact(React.Component) {
     var reg = new RegExp('^' + input, 'ig');
     var query = Categories.find({text: reg}, {limit:resultsNum}).fetch();
     query.map(function(i, index){
+        if (i.text != input){
         results.push(i.text.toString());
+        } else {
+        return;
+        }
       }
     );
     return results;
@@ -40,8 +44,8 @@ export default class AutoSuggest extends TrackerReact(React.Component) {
           {suggestionsArray.map(function(suggestion, index){
             if (index === 0){
               return null;
-            } else if (suggestion === input){
-              return null;
+            //} else if (suggestion === input){
+              //return null;
             } else {
               return <p3 key={index} className={"selected" + selectionArray[index]}> {suggestion} </p3>
             }
