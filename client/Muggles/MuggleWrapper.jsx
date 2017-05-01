@@ -14,7 +14,8 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       subscription: {
         phrases: Meteor.subscribe("allPhrases"),
         phrases: Meteor.subscribe("allCategories")
-      }
+      },
+      sortingDashboard: false
     }
   }
 
@@ -29,11 +30,12 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
   categories(){
     return Categories.find().fetch();
   }
-  //while inside this App class, this addPhrase function can not be referred to as
-  //this.addPhrase
+  //while inside this App class, this addPhrase function can not be referred to as this.addPhrase
+
 
   render(){
     let userPrompt;
+    Session.set("sortingDashboard", false);
     var currentCat = Session.get("currentCategory");
     var reactiveCat = Session.get("reactiveCategory");
     if (currentCat){
@@ -54,6 +56,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     if (reactiveCat){
       let phraseResultCount = Phrases.find({currentCategory: reactiveCat}).count();
       if (phraseResultCount>=1){
+        Session.set("sortingDashboard", true);
         //console.log("one or more");
         results = (
             <div>
@@ -70,6 +73,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         )
       }
       else {
+        Session.set("sortingDashboard", false);
         //console.log("none")
         results = (
           <span className = "label label-default">
@@ -80,6 +84,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       }
     }
     else {
+      Session.set("sortingDashboard", false);
       results = (
         <span className="label label-info">
         <p1>(Please type in a category and press 'enter' to begin.)</p1>
@@ -87,10 +92,21 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       )
     }
 
+    if(Session.get("sortingDashboard") === true){
+      var sortingDashboard = (
+        <div>Sorting Dashboard</div>
+      );
+    } else {
+      var sortingDashboard = (
+        <div></div>
+      );
+    }
+
     return(
       <div className="category-phrase-dashboard">
         <h1>You know you're a &nbsp; <CategoryForm /> {userPrompt}</h1>
         <div className = "phrases">
+        {sortingDashboard}
         {results}
         </div>
       </div>
