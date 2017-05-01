@@ -36,6 +36,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
 
   render(){
     let userPrompt;
+    Session.set("picsFirst", false);
     Session.set("sortingDashboard", false);
     var currentCat = Session.get("currentCategory");
     var reactiveCat = Session.get("reactiveCategory");
@@ -96,7 +97,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     //sortDash 'Display or Not' logic
     if(Session.get("sortingDashboard") === true){
       var sortDash = (
-        <SortDash/>
+        <SortDash picsFirst = {Session.get('picsFirst')}/>
       );
     } else {
       var sortDash = (

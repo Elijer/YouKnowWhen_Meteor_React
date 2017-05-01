@@ -237,7 +237,7 @@ input, select, textarea
     font-size 160%
     word-wrap break-word
 
-.btn, button
+button
     float right
     display inline-block
     cursor pointer
@@ -271,7 +271,12 @@ input, select, textarea
             shadow-level(2)
             border-color @background
 
-
+#picButton
+  background grey
+  color black
+  border none
+  &.active
+    background orange
 
 .panel-body
     .form-group
