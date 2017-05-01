@@ -5,6 +5,7 @@ import CategoryForm from './CategoryForm.jsx';
 import PhraseForm from './PhraseForm.jsx';
 import PhraseSingle from './PhraseSingle.jsx';
 import PhraseSingleImage from './PhraseSingleImage.jsx';
+import SortDash from './SortingDashboard.jsx';
 
 export default class MuggleWrapper extends TrackerReact(React.Component) {
   constructor(){
@@ -95,7 +96,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     //sortDash 'Display or Not' logic
     if(Session.get("sortingDashboard") === true){
       var sortDash = (
-        <div>Sorting Dashboard</div>
+        <SortDash/>
       );
     } else {
       var sortDash = (
