@@ -54,7 +54,7 @@ export default class PhraseSingleI extends TrackerReact(React.Component) {
         </div>
         <button className = "btn-upload"
           onClick={this.uploadImage.bind(this)}>
-            {"Upload File"}
+            {"Upload Image"}
         </button>
       </div>
     )

@@ -4,6 +4,7 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import CategoryForm from './CategoryForm.jsx';
 import PhraseForm from './PhraseForm.jsx';
 import PhraseSingle from './PhraseSingle.jsx';
+import PhraseSingleI from '../Illustrators/PhraseSingleI.jsx';
 
 export default class MuggleWrapper extends TrackerReact(React.Component) {
   constructor(){
@@ -59,6 +60,9 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
               {this.phrases({currentCategory: reactiveCat}).map( (phrase)=>{
                   if(phrase.imageUrl){
                     return <PhraseSingle key={phrase._id} phrase={phrase} />
+                  }
+                  else {
+                    return <PhraseSingleI key={phrase._id} phrase={phrase} />
                   }
                 }
               )}

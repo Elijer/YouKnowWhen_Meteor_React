@@ -10,6 +10,8 @@ A little more direction for clarity
 Do not show autosuggestions that are a perfect match to current input. That’s unnecessary
 input should still be in input box when page switches from Illustrators to Home and vice versa
 
+1. Automatically focus on search bar when user navigates to site
+
 
 
 
