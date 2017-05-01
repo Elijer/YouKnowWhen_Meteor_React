@@ -49,10 +49,9 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         <div></div>
       )
     }
-
-    let phraseResultCount = Phrases.find({currentCategory: reactiveCat}).count();
     //console.log(Phrases.find({currentCategory: Session.get("currentCategory")}).count());
     if (reactiveCat){
+      let phraseResultCount = Phrases.find({currentCategory: reactiveCat}).count();
       if (phraseResultCount>=1){
         //console.log("one or more");
         results = (
@@ -72,7 +71,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
           <span className = "label label-default">
             <p1> Oops! Nobody seems to have made any phrases for this category. Type one in to be the first! </p1>
           </span>
-          //http://getbootstrap.com/components/
+          ///http://getbootstrap.com/components/
         )
       }
     }
