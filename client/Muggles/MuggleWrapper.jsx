@@ -92,12 +92,13 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       )
     }
 
+    //sortDash 'Display or Not' logic
     if(Session.get("sortingDashboard") === true){
-      var sortingDashboard = (
+      var sortDash = (
         <div>Sorting Dashboard</div>
       );
     } else {
-      var sortingDashboard = (
+      var sortDash = (
         <div></div>
       );
     }
@@ -106,7 +107,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       <div className="category-phrase-dashboard">
         <h1>You know you're a &nbsp; <CategoryForm /> {userPrompt}</h1>
         <div className = "phrases">
-        {sortingDashboard}
+        {sortDash}
         {results}
         </div>
       </div>
