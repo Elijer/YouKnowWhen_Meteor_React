@@ -25,7 +25,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
   }
 
   phrases(searchKey){
-    return Phrases.find(searchKey).fetch();
+    return Phrases.find(searchKey, {sort: {createdAt: -1}}).fetch();
   }
 
   categories(){
