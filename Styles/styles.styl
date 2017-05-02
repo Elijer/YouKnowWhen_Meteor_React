@@ -271,12 +271,31 @@ button
             shadow-level(2)
             border-color @background
 
-#picButton
+#btnPicSort
+    padding-top 0px
+    padding-bottom 12px
+
+#selectedPicButton, #unSelectedPicButton
   background grey
   color black
   border none
+  outline none
   &.active
     background orange
+
+purp = #524763
+light-purp = #766a8a
+dark-purp = #373142
+highlight
+
+#selectedPicButton
+  background #373142
+  color white
+
+#unSelectedPicButton
+  background #766a8a
+  color black
+
 
 .panel-body
     .form-group
