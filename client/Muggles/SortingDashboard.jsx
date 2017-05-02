@@ -13,10 +13,12 @@ export default class SortDash extends TrackerReact(React.Component) {
 
   picsFirst(){
     this.setState({picsFirst: true});
+    Session.set('picsFirst', true);
   }
 
   picsLast(){
     this.setState({picsFirst: false});
+    Session.set('picsFirst', false);
   }
 
   render(){

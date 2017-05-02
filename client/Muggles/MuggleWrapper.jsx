@@ -16,7 +16,8 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         phrases: Meteor.subscribe("allPhrases"),
         phrases: Meteor.subscribe("allCategories")
       },
-      sortingDashboard: false
+      sortingDashboard: false,
+      picsFirst: false
     }
   }
 
@@ -24,8 +25,19 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     this.state.subscription.phrases.stop();
   }
 
+  setPicOrder(){
+    var picsFirst = Session.get('picsFirst');
+    this.setState({picsFirst: false});
+  }
+
   phrases(searchKey){
-    return Phrases.find(searchKey, {sort: {createdAt: -1}}).fetch();
+    var picsFirst = Session.get('picsFirst');
+    if (picsFirst === true){
+      var picsNum = -1;
+    } else {
+      picsNum = 1;
+    }
+    return Phrases.find(searchKey, {sort: {hasImage: picsNum}}).fetch();
   }
 
   categories(){
@@ -36,7 +48,6 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
 
   render(){
     let userPrompt;
-    Session.set("picsFirst", false);
     Session.set("sortingDashboard", false);
     var currentCat = Session.get("currentCategory");
     var reactiveCat = Session.get("reactiveCategory");
