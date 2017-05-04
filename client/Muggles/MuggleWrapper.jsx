@@ -21,15 +21,12 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     }
   }
 
-  flipOrder(){
-    var initialOrder = this.state.picsFirst;
-    this.setState({picsFirst: !initialOrder});
-    console.log("changed to: " + this.state.picsFirst);
+  setPicsFirst(){
+    this.setState({picsFirst: true});
   }
 
-  assignPicOrder(arePicsFirst){
-    this.setState({picsFirst: arePicsFirst});
-    console.log(this.state.picsFirst);
+  setPicsLast(){
+    this.setState({picsFirst: false});
   }
 
   componentWillUnMount(){
@@ -56,7 +53,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         userPrompt = (
           <span>
             when...
-            <PhraseForm assignPicOrder = {this.assignPicOrder.bind(this)}/>
+            <PhraseForm/>
           </span>
         )
     }
@@ -70,6 +67,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       let phraseResultCount = Phrases.find({currentCategory: reactiveCat}).count();
       if (phraseResultCount>=1){
         Session.set("sortingDashboard", true);
+        console.log(this.state.picsFirst);
         //console.log("one or more");
         results = (
             <div>
@@ -110,8 +108,8 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       var sortDash = (
         <SortDash
           picsFirst = {this.state.picsFirst}
-          flipOrder = {this.flipOrder.bind(this)}
-          assignPicOrder = {this.assignPicOrder.bind(this)}
+          setPicsFirst = {this.setPicsFirst.bind(this)}
+          setPicsLast = {this.setPicsLast.bind(this)}
         />
       );
     } else {
@@ -122,7 +120,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
 
     return(
       <div className="category-phrase-dashboard">
-        <h1>You know you're a &nbsp; <CategoryForm assignPicOrder = {this.assignPicOrder.bind(this)}/>
+        <h1>You know you're a &nbsp; <CategoryForm/>
         {userPrompt}
         </h1>
         <div className = "phrases">

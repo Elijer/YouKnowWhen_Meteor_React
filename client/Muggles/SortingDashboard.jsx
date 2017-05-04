@@ -15,6 +15,14 @@ export default class SortDash extends TrackerReact(React.Component) {
     this.props.flipOrder();
   }
 
+  setPicsFirst(){
+    this.props.setPicsFirst();
+  }
+
+  setPicsLast(){
+    this.props.setPicsLast();
+  }
+
   render(){
     var order = this.props.picsFirst;
     picButton = 'selected-' + order;
@@ -22,8 +30,8 @@ export default class SortDash extends TrackerReact(React.Component) {
 
     return(
       <div className="btn-group" id = "btnPicSort" role="group" aria-label="ButtonsYo">
-        <button type="button" className="btn btn-lg" id = {picButton} onClick = {this.flip.bind(this)}>Pics First</button>
-        <button type="button" className="btn btn-lg" id = {noPicButton} onClick = {this.flip.bind(this)}>No Pics First</button>
+        <button type="button" className="btn btn-lg" id = {picButton} onClick = {this.setPicsFirst.bind(this)}>Pics First</button>
+        <button type="button" className="btn btn-lg" id = {noPicButton} onClick = {this.setPicsLast.bind(this)}>No Pics First</button>
       </div>
     )
   }

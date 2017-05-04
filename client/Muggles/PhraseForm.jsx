@@ -21,7 +21,7 @@ export default class PhraseForm extends Component {
         if (!dbText){
           Modal.show("phraseSubmissionHome");
           Meteor.call('addPhrase', text, currentCat);
-          this.props.assignPicOrder(false);
+          //this.props.assignPicOrder(false);
         } else {
         Modal.show("repeatPhrase");
         }
