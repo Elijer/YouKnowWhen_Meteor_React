@@ -60,7 +60,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         userPrompt = (
           <span>
             when...
-            <PhraseForm/>
+            <PhraseForm setPicsLast = {this.setPicsLast.bind(this)}/>
           </span>
         )
     }

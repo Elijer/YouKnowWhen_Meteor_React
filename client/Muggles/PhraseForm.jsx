@@ -4,6 +4,7 @@ import ReactDom from 'react-dom';
 export default class PhraseForm extends Component {
 
   addPhrase(event){
+    var setPicsLast = this.props.setPicsLast;
     event.preventDefault();
     var dis = this;
     var text = this.refs.newPhrase.value.trim();
@@ -21,7 +22,7 @@ export default class PhraseForm extends Component {
         if (!dbText){
           Modal.show("phraseSubmissionHome");
           Meteor.call('addPhrase', text, currentCat);
-          //this.props.assignPicOrder(false);
+          setPicsLast();
         } else {
         Modal.show("repeatPhrase");
         }
