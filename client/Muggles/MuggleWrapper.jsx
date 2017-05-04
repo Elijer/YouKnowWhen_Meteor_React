@@ -8,6 +8,7 @@ import PhraseSingleImage from './PhraseSingleImage.jsx';
 import SortDash from './SortingDashboard.jsx';
 
 export default class MuggleWrapper extends TrackerReact(React.Component) {
+
   constructor(){
     super();
 
@@ -108,7 +109,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     //sortDash 'Display or Not' logic
     if(Session.get("sortingDashboard") === true){
       var sortDash = (
-        <SortDash picsFirst = {Session.get('picsFirst')}/>
+        <SortDash picsFirst = {this.state.picsFirst}/>
       );
     } else {
       var sortDash = (

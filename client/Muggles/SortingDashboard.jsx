@@ -4,10 +4,10 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class SortDash extends TrackerReact(React.Component) {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      picsFirst: false
+      picsFirst: props.picsFirst
     }
   }
 
@@ -24,8 +24,12 @@ export default class SortDash extends TrackerReact(React.Component) {
   render(){
     var picButton;
     var noPicButton;
-    var picsFirst = this.state.picsFirst;
-    if (picsFirst){
+    var picSesh = Session.get('picsFirst');
+    var picsState = this.state.picsFirst;
+    if (picSesh != picsState){
+      picState = picSesh;
+    }
+    if (picsState){
       picButton = "selectedPicButton";
       noPicButton = "unSelectedPicButton";
     } else {
