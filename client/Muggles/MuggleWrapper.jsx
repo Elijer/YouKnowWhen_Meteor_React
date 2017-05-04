@@ -41,7 +41,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     } else {
       picsNum = 1;
     }
-    return Phrases.find(searchKey, {sort: {hasImage: picsNum}}).fetch();
+    return Phrases.find(searchKey, {sort: {hasImage: picsNum, createdAt: -1}}).fetch();
   }
 
   categories(){
@@ -113,11 +113,11 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     //sortDash 'Display or Not' logic
     if(Session.get("sortingDashboard") === true){
       var sortDash = (
-        <SortDash
-          picsFirst = {this.state.picsFirst}
-          setPicsFirst = {this.setPicsFirst.bind(this)}
-          setPicsLast = {this.setPicsLast.bind(this)}
-        />
+          <SortDash
+            picsFirst = {this.state.picsFirst}
+            setPicsFirst = {this.setPicsFirst.bind(this)}
+            setPicsLast = {this.setPicsLast.bind(this)}
+          />
       );
     } else {
       var sortDash = (
