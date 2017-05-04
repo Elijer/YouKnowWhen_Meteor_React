@@ -22,17 +22,20 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     }
   }
 
+  setPicsFirst(){
+    this.setState({picsFirst: true});
+  }
+
+  setPicsLast(){
+    this.setState({picsFirst: false});
+  }
+
   componentWillUnMount(){
     this.state.subscription.phrases.stop();
   }
 
-  setPicOrder(){
-    var picsFirst = Session.get('picsFirst');
-    this.setState({picsFirst: false});
-  }
-
   phrases(searchKey){
-    var picsFirst = Session.get('picsFirst');
+    var picsFirst = this.state.picsFirst;
     if (picsFirst === true){
       var picsNum = -1;
     } else {
@@ -57,7 +60,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         userPrompt = (
           <span>
             when...
-            <PhraseForm />
+            <PhraseForm setPicsLast = {this.setPicsLast.bind(this)}/>
           </span>
         )
     }
@@ -71,6 +74,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       let phraseResultCount = Phrases.find({currentCategory: reactiveCat}).count();
       if (phraseResultCount>=1){
         Session.set("sortingDashboard", true);
+        console.log(this.state.picsFirst);
         //console.log("one or more");
         results = (
             <div>
@@ -109,7 +113,15 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     //sortDash 'Display or Not' logic
     if(Session.get("sortingDashboard") === true){
       var sortDash = (
+<<<<<<< HEAD
         <SortDash picsFirst = {this.state.picsFirst}/>
+=======
+        <SortDash
+          picsFirst = {this.state.picsFirst}
+          setPicsFirst = {this.setPicsFirst.bind(this)}
+          setPicsLast = {this.setPicsLast.bind(this)}
+        />
+>>>>>>> picsFirst
       );
     } else {
       var sortDash = (
@@ -119,7 +131,9 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
 
     return(
       <div className="category-phrase-dashboard">
-        <h1>You know you're a &nbsp; <CategoryForm /> {userPrompt}</h1>
+        <h1>You know you're a &nbsp; <CategoryForm/>
+        {userPrompt}
+        </h1>
         <div className = "phrases">
         {sortDash}
         {results}

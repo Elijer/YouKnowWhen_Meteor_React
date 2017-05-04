@@ -4,10 +4,14 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import AutoSuggest from '../autoComplete/AutoSuggest.jsx';
 
 export default class CategoryForm extends TrackerReact(React.Component) {
-
+//
     constructor(props) {
       super(props);
-      this.state = {suggestionsOn: false, food: '', keyCount: 0};
+      this.state = {
+        suggestionsOn: false,
+        food: '',
+        keyCount: 0
+      };
       //binds handleChange function to any event of the category input bar
       this.handleChange = this.handleChange.bind(this);
       //bings handleKeyPress event to any keyboard event when input is focused on
