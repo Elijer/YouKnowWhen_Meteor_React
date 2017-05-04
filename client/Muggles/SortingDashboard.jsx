@@ -4,37 +4,26 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class SortDash extends TrackerReact(React.Component) {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      picsFirst: false
+      picsFirst: this.props.picsFirst
     }
   }
 
-  picsFirst(){
-    this.setState({picsFirst: true});
-  }
-
-  picsLast(){
-    this.setState({picsFirst: false});
+  flip(){
+    this.props.flipOrder();
   }
 
   render(){
-    var picButton;
-    var noPicButton;
-    var picsFirst = this.state.picsFirst;
-    if (picsFirst){
-      picButton = "selectedPicButton";
-      noPicButton = "unSelectedPicButton";
-    } else {
-      picButton = "unSelectedPicButton";
-      noPicButton = "selectedPicButton";
-    }
+    var order = this.props.picsFirst;
+    picButton = 'selected-' + order;
+    noPicButton = 'selected-' + !order;
 
     return(
       <div className="btn-group" id = "btnPicSort" role="group" aria-label="ButtonsYo">
-        <button type="button" className="btn btn-lg" id = {picButton} onClick = {this.picsFirst.bind(this)}>Pics First</button>
-        <button type="button" className="btn btn-lg" id = {noPicButton} onClick = {this.picsLast.bind(this)}>No Pics First</button>
+        <button type="button" className="btn btn-lg" id = {picButton} onClick = {this.flip.bind(this)}>Pics First</button>
+        <button type="button" className="btn btn-lg" id = {noPicButton} onClick = {this.flip.bind(this)}>No Pics First</button>
       </div>
     )
   }
