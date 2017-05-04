@@ -32,6 +32,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
 
   componentWillUnMount(){
     this.state.subscription.phrases.stop();
+    console.log('unmount');
   }
 
   phrases(searchKey){
@@ -55,16 +56,14 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     Session.set("sortingDashboard", false);
     var currentCat = Session.get("currentCategory");
     var reactiveCat = Session.get("reactiveCategory");
-    if (currentCat){
-      if(currentCat === reactiveCat)
-        userPrompt = (
-          <span>
-            when...
-            <PhraseForm setPicsLast = {this.setPicsLast.bind(this)}/>
-          </span>
-        )
-    }
-    else {
+    //Toggle user prompt display conditonal
+    if (reactiveCat){
+      userPrompt =
+        (<span>
+          when...
+          <PhraseForm setPicsLast = {this.setPicsLast.bind(this)}/>
+        </span>)
+    } else {
       userPrompt = (
         <div></div>
       )
