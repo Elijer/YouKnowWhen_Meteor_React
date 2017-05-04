@@ -33,8 +33,15 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     this.state.subscription.phrases.stop();
   }
 
+
   phrases(searchKey){
-    return Phrases.find(searchKey, {sort: {createdAt: -1}}).fetch();
+    var picsFirst = this.state.picsFirst;
+    if (picsFirst === true){
+      var picsNum = -1;
+    } else {
+      picsNum = 1;
+    }
+    return Phrases.find(searchKey, {sort: {hasImage: picsNum}}).fetch();
   }
 
   categories(){
