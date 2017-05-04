@@ -113,15 +113,11 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     //sortDash 'Display or Not' logic
     if(Session.get("sortingDashboard") === true){
       var sortDash = (
-<<<<<<< HEAD
-        <SortDash picsFirst = {this.state.picsFirst}/>
-=======
         <SortDash
           picsFirst = {this.state.picsFirst}
           setPicsFirst = {this.setPicsFirst.bind(this)}
           setPicsLast = {this.setPicsLast.bind(this)}
         />
->>>>>>> picsFirst
       );
     } else {
       var sortDash = (
