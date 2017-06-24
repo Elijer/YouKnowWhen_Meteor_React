@@ -12,3 +12,5 @@ It's still a work in progress, but here are some things you can do to try it out
 4) Upload an image to your phrase
 5) Try typing some racial slurs into the top input
 6) Go to a category, and then try to submit a phrase that already exists.
+
+Enjoy!
