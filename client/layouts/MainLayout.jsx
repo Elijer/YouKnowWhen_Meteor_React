@@ -3,14 +3,12 @@ import React from 'react';
 export const MainLayout = ({content}) => (
   <div className="main-layout">
     <header>
-      <a href="/">
-        <h2>
-          <img src="YouKnow_Spiffy_Medium.png"/>
-        </h2>
-      </a>
       <nav>
-        <a href="/about"> About </a>
-        <a href="/contact"> Contact </a>
+        <a id = "logo" href="/">
+            <img src="YouKnow_NoLines.png"/>
+        </a>
+        <a id = "normNav" className = "norm" href="/about"> About </a>
+        <a id = "normNav" className = "norm" href="/contact"> Contact </a>
       </nav>
     </header>
     <main>
