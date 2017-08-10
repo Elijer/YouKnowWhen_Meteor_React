@@ -48,6 +48,7 @@ light-red = #CA5765
 pink = #CF256D
 orange = #E8846B
 beigey = #ffe070
+yeller = #fff371
 
 z = {
     neg: -7,
@@ -93,34 +94,15 @@ footer
   shadow-level(2)
   clearfix()
 
-//#nav-item
-    //position relative
-    //margin-top 60px
-    //padding-top 80px
-    //position absolute
-    //margin-top 4.2%
-    //height 200px
-
 header
-    color #FFF
     background: purp
     shadow-level(2)
     fixed top left
     width 100%
     z-index: z.header
-    //Controls height of purple bit
-    height 130px
+    height 135px
+    // ^ Controls height of purple bit
 
-    /*padding-top 0px
-    padding-left 30px
-    padding-right 30px
-    z-index: z.header
-    //clearfix()
-    h2
-        font-weight 100
-        font-size 1.6em
-        float center*/
-        //padding top right bottom left
     nav
             padding-top 10px
             padding-bottom 40px
@@ -133,18 +115,18 @@ header
             padding 0px 0px 0px 0px
             text-decoration none
             padding-bottom 15px
-            //line-height: 50px
             border-bottom 5px solid transparent
             trans()
             &:hover
                 border-color teal
-                color: #FFF
-                text-decoration: none
+                color yeller
+                text-decoration none
             &:visited
                 color #FFF
                 background orange
                 text-decoration: none
                 underline none
+            //&:active
 
     img
           relative bottom right
@@ -156,38 +138,6 @@ header
     #navitem
           float right
           margin-top 55px
-        //relative bottom left
-        /*text-decoration: none
-        #normNav
-            padding-top 3em
-        a
-            relative bottom right
-            text-decoration: none
-            padding-top: .8em
-            font-size: 160%
-            display: inline-block
-            border-bottom 4px solid transparent
-            trans()
-            + a
-                margin-left: 30px
-                text-decoration none
-            &:visited
-                color #FFF
-                background orange
-                text-decoration: none
-                underline none
-            &:hover
-                border-color teal
-                color: #FFF
-                text-decoration: none
-            &:active
-                color #FFF
-                text-decoration none
-            @media only screen and (max-width: 872px)
-              font-size: 120%
-              line-height: 4em
-            @media only screen and (max-width: 765px)
-              visibility hidden*/
 
 .category-phrase-dashboard
     text-align center
@@ -405,57 +355,3 @@ input:-ms-input-placeholder
 .route-appear
     opacity: 0
     animation: slideUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
-
-
-/*
-                .side-nav
-                    fixed bottom left
-                    height 100px
-                    width 100%
-                    overflow hidden
-                    background dark-purp
-                    color #FFF
-                    z-index: z.header
-                    shadow-level(2)
-                    ul
-                        margin 0
-                        padding 0
-                        float left
-                        //display flex
-                        //justify-content space-between
-                        list-style none
-                    a
-                        color #FFF
-                        text-decoration none
-                        padding 20px 20px
-                        display block
-                        text-align center
-                        trans()
-                        &:hover, &.active
-                            background purp
-                    i
-                        display block
-                        font-size 2em
-                        margin-bottom 10px
-                    +above($med)
-                        height 100%
-                        z-index: z.mid
-                        padding 120px 0
-                        fixed top left
-                        width $side-nav
-                        ul
-                            display block
-                        shadow-level(-1)
-                        a
-                            padding 20px 10px
-                            &:hover, &.active
-                                border-left 4px solid teal
-                    +above($large)
-                        width $side-nav-large
-                        a
-                            padding 20px 20px
-                            &:hover, &.active
-                                border-left 10px solid teal
-
-
-                */
