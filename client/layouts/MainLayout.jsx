@@ -7,8 +7,8 @@ export const MainLayout = ({content}) => (
           <a id = "logo" href="/">
               <img src="YouKnow_NoLines.png"/>
           </a>
-          <a id = "nav-item" href="/about"> About </a>
-          <a id = "nav-item" href="/contact"> Contact </a>
+          <a id = "navitem" href="/about"> About </a>
+          <a id = "navitem" href="/contact"> Contact </a>
       </nav>
     </header>
     <main>
