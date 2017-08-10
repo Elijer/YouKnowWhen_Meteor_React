@@ -20,6 +20,7 @@ shadow-level(l = 1)
 // Common Transition
 trans($sec = 0.3s)
     transition: all $sec ease
+
 // Grid
 $xsmall = 340px
 $small = 500px
@@ -70,6 +71,7 @@ social = {
 
 html
     box-sizing: border-box
+    font-family: 'Open Sans', sans-serif
 
 *, *:before, *:after
     box-sizing: inherit
@@ -78,7 +80,6 @@ body
     float center
     background light-grey
     padding: 180px 0 0px
-    font-family: 'Open Sans', sans-serif
 
 footer
   color #FFF
@@ -88,7 +89,7 @@ footer
   position: absolute
   relative bottom left
   width 100%
-  z-index: z.header
+  z-index: 11
   shadow-level(2)
   clearfix()
 
@@ -106,8 +107,9 @@ header
     shadow-level(2)
     fixed top left
     width 100%
+    z-index: z.header
     //Controls height of purple bit
-    height 150px
+    height 130px
 
     /*padding-top 0px
     padding-left 30px
@@ -130,7 +132,7 @@ header
             font-size 200%
             padding 0px 0px 0px 0px
             text-decoration none
-            padding-bottom 20px
+            padding-bottom 15px
             //line-height: 50px
             border-bottom 5px solid transparent
             trans()
@@ -146,7 +148,7 @@ header
 
     img
           relative bottom right
-          height 160px
+          height 163px
           //BELOW IS HOW I ALIGN LOGO WITH NAV ITEMS
           padding-top 10px
           padding-bottom 48px
