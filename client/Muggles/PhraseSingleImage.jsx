@@ -21,7 +21,9 @@ export default class PhraseSingleImage extends Component {
             checked={this.props.phrase.complete}
             onClick={this.toggleChecked.bind(this)} />
             */}
-            <img src={imageUrl} alt="Image missing"/>
+            <a data-fancybox="gallery" href={imageUrl}>
+              <img src={imageUrl} alt="Image missing"/>
+            </a>
             <div className = "phraseDiv">
               <p1 className = "phraseText">{this.props.phrase.text}</p1>
             </div>
