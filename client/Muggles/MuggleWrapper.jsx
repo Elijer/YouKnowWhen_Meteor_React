@@ -3,8 +3,10 @@ import ReactDom from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import CategoryForm from './CategoryForm.jsx';
 import PhraseForm from './PhraseForm.jsx';
-import PhraseSingle from './PhraseSingle.jsx';
+//import PhraseSingle from './PhraseSingle.jsx';
+//import PhraseSingleImage from './PhraseSingleImage.jsx';
 import PhraseSingleImage from './PhraseSingleImage.jsx';
+import PhraseSingleNoImage from './PhraseSingleNoImage.jsx';
 import SortDash from './SortingDashboard.jsx';
 
 export default class MuggleWrapper extends TrackerReact(React.Component) {
@@ -79,10 +81,10 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
             <div>
               {this.phrases({currentCategory: reactiveCat}).map( (phrase)=>{
                   if(phrase.imageUrl){
-                    return <PhraseSingle key={phrase._id} phrase={phrase} />
+                    return <PhraseSingleImage key={phrase._id} phrase={phrase} />
                   }
                   else {
-                    return <PhraseSingleImage key={phrase._id} phrase={phrase} />
+                    return <PhraseSingleNoImage key={phrase._id} phrase={phrase} />
                   }
                 }
               )}
