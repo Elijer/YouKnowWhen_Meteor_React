@@ -81,6 +81,9 @@ body
     float center
     background light-grey
     padding: 180px 0 0px
+    @media only screen and (max-width: 512px) {
+        padding 30% 0%
+    }
 
 footer
   color #FFF
@@ -144,10 +147,6 @@ header
           //BELOW IS HOW I ALIGN LOGO WITH NAV ITEMS
           padding-top 10px
           padding-bottom 48px
-          #logo
-                  @media only screen and (max-width: 550px) {
-                      background red
-                  }
 
 
   #logocontainer
@@ -180,7 +179,6 @@ input, select, textarea
     font-weight 800
     padding 6px 10px
     margin-bottom 0px
-    margin-top 14px
     position relative
     outline 2px
     .suggestionsContainer
