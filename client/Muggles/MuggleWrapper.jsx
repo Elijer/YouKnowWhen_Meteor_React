@@ -72,9 +72,15 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     }
     //console.log(Phrases.find({currentCategory: Session.get("currentCategory")}).count());
     if (reactiveCat){
+      let withpicture = Phrases.find({currentCategory: reactiveCat, hasImage: true}).count();
+      let withoutpicture = Phrases.find({currentCategory: reactiveCat, hasImage: false}).count();
       let phraseResultCount = Phrases.find({currentCategory: reactiveCat}).count();
-      if (phraseResultCount>=1){
+      if (withoutpicture >=1 && withpicture >=1){
         Session.set("sortingDashboard", true);
+      } else {
+        Session.set("sortingDashboard", false);
+      }
+      if (phraseResultCount>=1){
         console.log(this.state.picsFirst);
         //console.log("one or more");
         results = (
