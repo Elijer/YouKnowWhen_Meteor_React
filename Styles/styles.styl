@@ -102,7 +102,15 @@ header
     z-index: z.header
     height 138px
     text-decoration none
-    // ^ Controls height of purple bit
+    @media only screen and (max-width: 512px) {
+        display center
+        width 100%
+        height 0px
+        padding-bottom 27%
+        //padding is a % of width but height is not,
+        //what I want to do is link the height property
+        //but I cheat here by linking padding as a substitute
+    }
 
     nav
             padding-top 10px
@@ -136,13 +144,21 @@ header
           //BELOW IS HOW I ALIGN LOGO WITH NAV ITEMS
           padding-top 10px
           padding-bottom 48px
+          #logo
+                  @media only screen and (max-width: 550px) {
+                      background red
+                  }
 
 
-  #logo
+  #logocontainer
           &:hover
               border-color light-purp
-          @media only screen and (max-width: 550px) {
-              display none
+
+  #logo
+          @media only screen and (max-width: 512px) {
+              display center
+              width 100%
+              height 100%
           }
 
     #navitem

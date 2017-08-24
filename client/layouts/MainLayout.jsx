@@ -1,11 +1,13 @@
 import React from 'react';
 
 export const MainLayout = ({content}) => (
+
+
   <div className="main-layout">
-    <header>
+    <header id = "header">
       <nav>
-          <a id = "logo" href="/">
-              <img src="YouKnow_NoLines.png"/>
+          <a id = "logocontainer" href="/">
+              <img id = "logo" src="YouKnow_NoLines.png"/>
           </a>
           <a id = "navitem" href="/about"> About </a>
           <a id = "navitem" href="/contact"> Contact </a>
