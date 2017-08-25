@@ -6,7 +6,8 @@ import MuggleWrapper from './Muggles/MuggleWrapper.jsx';
 import IllustratorWrapper from './Illustrators/IllustratorWrapper.jsx';
 import About from './About.jsx';
 import Contact from './Contact.jsx';
-import Profile from './Profile.jsx'
+import Profile from './Profile.jsx';
+import ImageDisplay from './ImageDisplay.jsx';
 
 FlowRouter.route('/', {
   action(){
@@ -47,3 +48,12 @@ FlowRouter.route('/Profile', {
     });
   }
 });
+
+
+FlowRouter.route('/ImagePost/:_id',  {
+    action(params){
+      mount(MainLayout, {
+        content: (<ImageDisplay  id = {params._id} />)
+      })
+  }
+})
