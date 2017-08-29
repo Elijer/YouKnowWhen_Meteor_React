@@ -17,13 +17,13 @@ FlowRouter.route('/', {
   }
 });
 
-FlowRouter.route('/forIllustrators', {
+/*FlowRouter.route('/forIllustrators', {
   action(){
     mount(MainLayout, {
         content: (<IllustratorWrapper />)
     });
   }
-});
+});*/
 
 FlowRouter.route('/About', {
   action(){
