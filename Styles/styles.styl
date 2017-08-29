@@ -237,7 +237,7 @@ input, select, textarea
   //padding 1%
   //border 1px light-purp solid
   margin 1%
-  background dark-purp
+  background light-purp
   shadow-level(1)
   width 23%
   height 400px
@@ -248,7 +248,7 @@ input, select, textarea
   word-wrap normal
   trans()
   &:hover
-    background dark-purp
+    background light-purp
     shadow-level(4)
     .btn, button
       transition visibility none
@@ -269,13 +269,31 @@ input, select, textarea
     padding 10px 12px
     float center
     background light-purp
+        max-height 100%
 
 .phraseText
     font-size 160%
     word-wrap break-word
 
+.phraseTextImage
+    font-size 160%
+    word-wrap break-word
+
+#tiny
+      font-size 110%
+
+#normal
+      font-size 160%
+
+#beeg
+      font-size 280%
+      word-wrap break-word
+
+#yuge
+      font-size 300%
+
 button
-    float right
+    float center
     display inline-block
     cursor pointer
     background purp
@@ -284,10 +302,11 @@ button
     text-transform uppercase
     padding 5px 15px
     //the margin-left is for the yes, cancel buttons on the modal
-    margin-left 10px
+    margin-left 5px
     border solid 3px purp
     border-radius 2px
-    font-weight 800
+    //font-weight 1000
+    font-size 160%
     shadow-level(1)
     trans()
     &:hover

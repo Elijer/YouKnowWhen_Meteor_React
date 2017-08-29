@@ -59,7 +59,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     var currentCat = Session.get("currentCategory");
     var reactiveCat = Session.get("reactiveCategory");
     //Toggle user prompt display conditonal
-    if (reactiveCat){
+    if (reactiveCat === currentCat){
       userPrompt =
         (<span>
           when...
@@ -71,7 +71,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       )
     }
     //console.log(Phrases.find({currentCategory: Session.get("currentCategory")}).count());
-    if (reactiveCat){
+    if (reactiveCat == currentCat){
       let withpicture = Phrases.find({currentCategory: reactiveCat, hasImage: true}).count();
       let withoutpicture = Phrases.find({currentCategory: reactiveCat, hasImage: false}).count();
       let phraseResultCount = Phrases.find({currentCategory: reactiveCat}).count();
@@ -81,8 +81,6 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         Session.set("sortingDashboard", false);
       }
       if (phraseResultCount>=1){
-        console.log(this.state.picsFirst);
-        //console.log("one or more");
         results = (
             <div>
               {this.phrases({currentCategory: reactiveCat}).map( (phrase)=>{
@@ -114,7 +112,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       results = (
         <h1>
           <span className="label label-info">
-            Please type in a category and press 'enter' to begin.
+            Try typing something.
           </span>
         </h1>
       )

@@ -38,7 +38,7 @@ export default class PhraseForm extends Component {
             <input type="text"
               ref="newPhrase"
               placeholder="add new phrase"
-              maxLength="100"
+              maxLength="135"
               list="yo"
               />
           </form>

@@ -33,6 +33,16 @@ export default class PhraseSingleNoImage extends TrackerReact(React.Component) {
   }
 
   render(){
+    var imageText = this.props.phrase.text;
+    var chars = imageText.length;
+    var txtSize = "normal";
+    if (chars > 100){
+      txtSize = "normal";
+    } else if (chars > 8){
+      txtSize = "normal";
+    } else {
+      txtSize = "beeg";
+    }
     //i love u bb jah <3 :)
     /*
     return (
@@ -50,7 +60,7 @@ export default class PhraseSingleNoImage extends TrackerReact(React.Component) {
     return (
       <div className = "tile">
         <div className = "phraseDiv">
-          <p1 className = "phraseText">{this.props.phrase.text}</p1>
+          <p1 className = "phraseText" id = {txtSize} >{this.props.phrase.text}</p1>
         </div>
         <button className = "btn-upload"
           onClick={this.uploadImage.bind(this)}>

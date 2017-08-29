@@ -86,7 +86,7 @@ export default class IllustratorWrapper extends TrackerReact(React.Component) {
     else {
       results = (
         <span className="label label-info">
-        <p1>(Please type in a category to begin.)</p1>
+        <p1>(Try typing something.)</p1>
         </span>
       )
     }

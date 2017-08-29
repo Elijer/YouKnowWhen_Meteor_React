@@ -12,25 +12,32 @@ export default class PhraseSingleImage extends Component {
 
   render(){
     var imageUrl = this.props.phrase.imageUrl;
-    //console.log(this.props.phrase);
+    var imageText = this.props.phrase.text;
+    var chars = imageText.length;
+    console.log(chars);
+    var txtSize = "normal";
+    if (chars > 100){
+      txtSize = "tiny";
+    } else if (chars > 30){
+      txtSize = "normal";
+    } else if (chars > 10){
+      txtSize = "beeg";
+    } else {
+      txtSize = "yuge";
+    }
+
     return (
         <div className = "tile">
-          {/*
-          <input type="checkbox"
-            readOnly={true}
-            checked={this.props.phrase.complete}
-            onClick={this.toggleChecked.bind(this)} />
-            */}
             <a data-fancybox="gallery" href={imageUrl}>
               <img src={imageUrl} alt="Image missing"/>
             </a>
             <div className = "phraseDiv">
-              <p1 className = "phraseText">{this.props.phrase.text}</p1>
+              <p1 className = "phraseTextImage" id = {txtSize} >{this.props.phrase.text}</p1>
             </div>
-            <button className="btn-cancel"
+            {/*<button className="btn-cancel"
               onClick={this.deletePhrase.bind(this)}>
               &times;
-            </button>
+            </button>*/}
         </div>
     )
   }
