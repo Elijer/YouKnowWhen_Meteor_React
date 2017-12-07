@@ -54,12 +54,13 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
 
 
   render(){
+    //THIS PART is about displaying the Phraseform
     let userPrompt;
     Session.set("sortingDashboard", false);
     var currentCat = Session.get("currentCategory");
     var reactiveCat = Session.get("reactiveCategory");
     //Toggle user prompt display conditonal
-    if (reactiveCat === currentCat){
+    if (currentCat && reactiveCat === currentCat){
       userPrompt =
         (<span>
           when...
@@ -70,8 +71,9 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         <div></div>
       )
     }
-    //console.log(Phrases.find({currentCategory: Session.get("currentCategory")}).count());
-    if (reactiveCat == currentCat){
+
+    //THIS PART is about displaying the tiles
+    if (currentCat && reactiveCat == currentCat){
       let withpicture = Phrases.find({currentCategory: reactiveCat, hasImage: true}).count();
       let withoutpicture = Phrases.find({currentCategory: reactiveCat, hasImage: false}).count();
       let phraseResultCount = Phrases.find({currentCategory: reactiveCat}).count();
