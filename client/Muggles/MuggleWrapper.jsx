@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import CategoryForm from './CategoryForm.jsx';
 import PhraseForm from './PhraseForm.jsx';
+import Animation from './Animation.jsx';
 //import PhraseSingle from './PhraseSingle.jsx';
 //import PhraseSingleImage from './PhraseSingleImage.jsx';
 import PhraseSingleImage from './PhraseSingleImage.jsx';
@@ -50,6 +51,41 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
   categories(){
     return Categories.find().fetch();
   }
+
+  activateVideo(context){
+    //console.log();
+    ////// Okay, I think you're gonna need to think harder on this to make it work.
+    ///Try this one.
+    //////https://blog.cloudboost.io/using-html5-canvas-with-react-ff7d93f5dc76
+    //console.log(element.props.children[2].getContext()); //< video
+    //console.log(context.refs.canvas_output);
+    //console.log(canvas);
+    //console.log(element.props.children[1]); < canvas1
+    //console.log(element.props.children[2]);
+    //console.log(this.refs.output);
+    /*var outputCanvas = element.props.children[2];
+    output = outputCanvas.getContext('2d');
+    bufferCanvas = element.props.children[1];
+    buffer = bufferCanvas.getContext('2d');
+    video = element.props.children[0];
+    width = outputCanvas.width;
+    height = outputCanvas.height,interval;
+
+    function processFrame() {
+      buffer.drawImage(video, 0, 0);
+
+          // this can be done without alphaData, except in Firefox which doesn't like it when image is bigger than the canvas
+      var image = buffer.getImageData(0, 0, width, height),
+      imageData = image.data,
+      alphaData = buffer.getImageData(0, height, width, height).data;
+
+      for (var i = 3, len = imageData.length; i < len; i = i + 4) {
+      imageData[i] = alphaData[i-1];
+      }
+
+      output.putImageData(image, 0, 0, 0, 0, width, height);
+    }*/
+  }
   //while inside this App class, this addPhrase function can not be referred to as this.addPhrase
 
 
@@ -68,9 +104,13 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         </span>)
     } else {
       userPrompt = (
-        <div></div>
+        <Animation/>
       )
+      //this.activateVideo(userPrompt);
+      //console.log(userPrompt);
     }
+
+    //          <img src= 'ykw_Placeholder.png' alt="Profile_Example"/>
 
     //THIS PART is about displaying the tiles
     if (currentCat && reactiveCat == currentCat){
