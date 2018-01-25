@@ -10,7 +10,8 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       this.state = {
         suggestionsOn: false,
         food: '',
-        keyCount: 0
+        keyCount: 0,
+        placeholder: 'Web Designer'
       };
       //binds handleChange function to any event of the category input bar
       this.handleChange = this.handleChange.bind(this);
@@ -34,6 +35,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       var input = e.target.value.trim().toLowerCase();
       !input ? this.setState({food: ''}):this.setState({food: input});
       Session.set("reactiveCategory", input);
+      console.log('achange');
       //console.log(e);
       //so it looks like my problem is that putting stuff in doesn't trigger a change.
     }
@@ -65,8 +67,9 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     var autosuggestFood = this.state.food;
     var keyCount = this.state.keyCount;
     var autosuggestActive = this.state.suggestionsOn;
-    console.log(this.props.placeHolder);
-    //var placeHolder = this.props.placeHolder.;
+    var placeholder = this.state.placeholder;
+    context = this;
+    setTimeout(function(){context.setState({placeholder: 'test'}) }, 3000);
 
     return (
             <form className="select-category"
@@ -74,7 +77,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
               <label>
               <input type="text"
                 ref="currentCategory"
-                placeholder = 'yo'
+                placeholder = {placeholder}
                 onChange={this.handleChange}
                 onKeyDown={this.handleKeyPress}/>
               <AutoSuggest input={autosuggestFood} count={keyCount} active={autosuggestActive}/>

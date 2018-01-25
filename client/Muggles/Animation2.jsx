@@ -51,7 +51,6 @@ export default class Animation2 extends TrackerReact(React.Component) {
   }
 
   render(){
-    console.log(this.props.phase);
     return(
       <div className="offset4" ref = "canvas_output" id="canvas_output">
         <video id="video2" style = {{display: 'none'}} autoPlay loop>

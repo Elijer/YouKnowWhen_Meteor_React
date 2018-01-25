@@ -26,11 +26,13 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     }
   }
 
+/*
   initiateOrientation(){
     var context = this;
     setTimeout(context.setState({placeHolder: 'Gardener'}), 400);
     setTimeout(context.setState({placeHolder: 'Web Designer'}), 800);
   }
+  */
 
 
   setPicsFirst(){
@@ -78,7 +80,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         </span>)
     } else {
       phrase = 'Try_typing_Tall2.mp4';
-      this.initiateOrientation();
+      //this.initiateOrientation();
       //this.setState({placeholder: 'Web Designer'});
       //phrase = 'Idle_Tall.mp4';
       //phrase = 'Look_Up.mp4'
