@@ -62,13 +62,11 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     }
 
   render(){
-    var placeholder;
-    var currentCat = Session.get("currentCategory");
-    currentCat ? placeholder = currentCat:placeholder = "Web Designer"
-    //these three variables are for feeding the AutoSuggest component in the return()
     var autosuggestFood = this.state.food;
     var keyCount = this.state.keyCount;
     var autosuggestActive = this.state.suggestionsOn;
+    console.log(this.props.placeHolder);
+    //var placeHolder = this.props.placeHolder.;
 
     return (
             <form className="select-category"
@@ -76,7 +74,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
               <label>
               <input type="text"
                 ref="currentCategory"
-                placeholder={placeholder}
+                placeholder = 'yo'
                 onChange={this.handleChange}
                 onKeyDown={this.handleKeyPress}/>
               <AutoSuggest input={autosuggestFood} count={keyCount} active={autosuggestActive}/>

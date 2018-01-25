@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import Animation2 from './Animation2.jsx';
 
 export default class Animation extends TrackerReact(React.Component) {
 
@@ -10,6 +11,10 @@ export default class Animation extends TrackerReact(React.Component) {
     this.state = {
       phase: 'standby'
     }
+  }
+
+  handleChange(event){
+    console.log('yo');
   }
 
   componentDidMount(){
@@ -51,13 +56,17 @@ export default class Animation extends TrackerReact(React.Component) {
   }
 
   render(){
+    var phase = this.props.phase;
     return(
-      <div className="offset3" ref = "canvas_output" id="canvas_output">
-        <video id="video" style = {{display: 'none'}} autoPlay>
-            <source src="Background_Tall_1.mp4" type='video/mp4' />
-        </video>
-        <canvas width="1280" height="2048" ref = "buffer" id="buffer" style = {{display: 'none'}}></canvas>
-        <canvas width="1280" height="1024" ref = "output" id="output"></canvas>
+      <div>
+        <Animation2 phase = {phase} tonChange={this.handleChange.bind(this)}/>
+        <div className="offset3" ref = "canvas_output" id="canvas_output">
+          <video id="video" style = {{display: 'none'}} autoPlay loop>
+              <source src="Background_Tall_1.mp4" type='video/mp4' />
+          </video>
+          <canvas width="1280" height="2048" ref = "buffer" id="buffer" style = {{display: 'none'}}></canvas>
+          <canvas width="1280" height="1024" ref = "output" id="output"></canvas>
+        </div>
       </div>
     )
   }

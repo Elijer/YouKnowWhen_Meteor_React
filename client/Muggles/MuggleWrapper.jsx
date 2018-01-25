@@ -18,12 +18,20 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     this.state = {
       subscription: {
         phrases: Meteor.subscribe("allPhrases"),
-        phrases: Meteor.subscribe("allCategories")
+        phrases: Meteor.subscribe("allCategories"),
       },
       sortingDashboard: false,
-      picsFirst: false
+      picsFirst: false,
+      placeHolder: 'Web Designer'
     }
   }
+
+  initiateOrientation(){
+    var context = this;
+    setTimeout(context.setState({placeHolder: 'Gardener'}), 400);
+    setTimeout(context.setState({placeHolder: 'Web Designer'}), 800);
+  }
+
 
   setPicsFirst(){
     this.setState({picsFirst: true});
@@ -52,44 +60,10 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
     return Categories.find().fetch();
   }
 
-  activateVideo(context){
-    //console.log();
-    ////// Okay, I think you're gonna need to think harder on this to make it work.
-    ///Try this one.
-    //////https://blog.cloudboost.io/using-html5-canvas-with-react-ff7d93f5dc76
-    //console.log(element.props.children[2].getContext()); //< video
-    //console.log(context.refs.canvas_output);
-    //console.log(canvas);
-    //console.log(element.props.children[1]); < canvas1
-    //console.log(element.props.children[2]);
-    //console.log(this.refs.output);
-    /*var outputCanvas = element.props.children[2];
-    output = outputCanvas.getContext('2d');
-    bufferCanvas = element.props.children[1];
-    buffer = bufferCanvas.getContext('2d');
-    video = element.props.children[0];
-    width = outputCanvas.width;
-    height = outputCanvas.height,interval;
-
-    function processFrame() {
-      buffer.drawImage(video, 0, 0);
-
-          // this can be done without alphaData, except in Firefox which doesn't like it when image is bigger than the canvas
-      var image = buffer.getImageData(0, 0, width, height),
-      imageData = image.data,
-      alphaData = buffer.getImageData(0, height, width, height).data;
-
-      for (var i = 3, len = imageData.length; i < len; i = i + 4) {
-      imageData[i] = alphaData[i-1];
-      }
-
-      output.putImageData(image, 0, 0, 0, 0, width, height);
-    }*/
-  }
-  //while inside this App class, this addPhrase function can not be referred to as this.addPhrase
-
-
   render(){
+    var placeHolder = 'Web Designer';
+    //window.localStorage.setItem('test', 'test');
+    //console.log(window.localStorage.getItem('test'));
     //THIS PART is about displaying the Phraseform
     let userPrompt;
     Session.set("sortingDashboard", false);
@@ -103,8 +77,13 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
           <PhraseForm setPicsLast = {this.setPicsLast.bind(this)}/>
         </span>)
     } else {
+      phrase = 'Try_typing_Tall2.mp4';
+      this.initiateOrientation();
+      //this.setState({placeholder: 'Web Designer'});
+      //phrase = 'Idle_Tall.mp4';
+      //phrase = 'Look_Up.mp4'
       userPrompt = (
-        <Animation/>
+        <Animation phase = 'schmoop'/>
       )
       //this.activateVideo(userPrompt);
       //console.log(userPrompt);
@@ -154,7 +133,6 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       results = (
         <h1>
           <span className="label label-info">
-            Try typing something.
           </span>
         </h1>
       )
@@ -177,7 +155,7 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
 
     return(
       <div className="category-phrase-dashboard">
-        <h1>You know you're a &nbsp; <CategoryForm/>
+        <h1>You know you're a &nbsp; <CategoryForm placeHolder = {this.state.placeHolder}/>
         {userPrompt}
         </h1>
         <div className = "phrases">
