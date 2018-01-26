@@ -32,39 +32,52 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     var firsttime = delay + interval*10+interDuration;
     ///put this all instead in the componentDidMount whatever thingy, seems like what I should do.
     setTimeout(function(){context.setState({placeholder: 'W'}) }, delay);
-    setTimeout(function(){context.setState({placeholder: 'We'}) }, delay + interval);
-    setTimeout(function(){context.setState({placeholder: 'Web'}) }, delay + interval*2);
-    setTimeout(function(){context.setState({placeholder: 'Web D'}) }, delay + interval*3);
-    setTimeout(function(){context.setState({placeholder: 'Web De'}) }, delay + interval*4);
-    setTimeout(function(){context.setState({placeholder: 'Web Des'}) }, delay + interval*5);
-    setTimeout(function(){context.setState({placeholder: 'Web Desi'}) }, delay + interval*6);
-    setTimeout(function(){context.setState({placeholder: 'Web Desig'}) }, delay + interval*7);
-    setTimeout(function(){context.setState({placeholder: 'Web Design'}) }, delay + interval*8);
-    setTimeout(function(){context.setState({placeholder: 'Web Designe'}) }, delay + interval*9);
-    setTimeout(function(){context.setState({placeholder: 'Web Designer'}) }, delay + interval*10);
-    setTimeout(function(){context.setState({placeholder: ''}) }, delay + interval*10+interDuration);
-    setTimeout(function(){context.setState({placeholder: 'E'}) }, firsttime + interval2);
-    setTimeout(function(){context.setState({placeholder: 'En'}) }, firsttime + interval2*2);
-    setTimeout(function(){context.setState({placeholder: 'Ent'}) }, firsttime + interval2*3);
-    setTimeout(function(){context.setState({placeholder: 'Entr'}) }, firsttime + interval2*4);
-    setTimeout(function(){context.setState({placeholder: 'Entre'}) }, firsttime + interval2*5);
-    setTimeout(function(){context.setState({placeholder: 'Entrep'}) }, firsttime + interval2*6);
-    setTimeout(function(){context.setState({placeholder: 'Entrepr'}) }, firsttime + interval2*7);
-    setTimeout(function(){context.setState({placeholder: 'Entrepre'}) }, firsttime + interval2*8);
-    setTimeout(function(){context.setState({placeholder: 'Entrepren'}) }, firsttime + interval2*9);
-    setTimeout(function(){context.setState({placeholder: 'Entreprene'}) }, firsttime + interval2*10);
-    setTimeout(function(){context.setState({placeholder: 'Entrepreneu'}) }, firsttime + interval2*11);
-    setTimeout(function(){context.setState({placeholder: 'Entrepreneur'}) }, firsttime + interval2*12);
-    setTimeout(function(){context.setState({placeholder: ''}) }, firsttime + interval2*12+finalHold);*/
+    setTimeout(function(){context.setState({placeholder: 'We'}) }, delay + interval);*/
 
-    pholdHelper(context, what){
+    /*for (i = 1; i <= 5; ++i) {
+      setDelay(i);
+    }
+
+    function setDelay(i) {
+      setTimeout(function(){
+        console.log(i);
+      }, 1000);
+    }*/
+
+    pholdHelper(context, string, delay, duration, holdTime){
       var delay = 2000;
-      setTimeout(function(){context.setState({placeholder: 'Elijah'}) }, delay);
+      var leng = string.length;
+      var interval = duration/leng;
+      var substring;
+      this.dominoes(0);
+      /*for (var i = 0; i<=leng; i++){
+        subString = string.substr(0, i);
+        //console.log(subString);
+        context.setDelay(subString);
+      }*/
+    }
+
+    dominoes(counter){
+      console.log('dominoes');
+      counter++;
+      if (counter > 10){
+        return;
+      } else {
+        this.dominoes(counter);
+      }
+
+    }
+
+    setDelay(string){
+      setTimeout(function(){
+        console.log(string);
+      }, 5000);
     }
 
     componentDidMount(){
       var context = this;
-      this.pholdHelper(context, "componentDidMount");
+      //this.pholdHelper(context, "componentDidMount");
+      context.pholdHelper(context, 'Web Designer', 3000, 3000, 2000)
     }
 
     //handleKeyPress() and handleChange() are both for feeding the AutoSuggest component
