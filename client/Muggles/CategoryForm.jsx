@@ -49,7 +49,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       var leng = string.length;
       var interval = duration/leng;
       var substring;
-      this.dominoes(0);
+      this.dominoes(this, 'string', 0);
       /*for (var i = 0; i<=leng; i++){
         subString = string.substr(0, i);
         //console.log(subString);
@@ -57,13 +57,14 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       }*/
     }
 
-    dominoes(counter){
-      console.log('dominoes');
-      counter++;
-      if (counter > 10){
+    dominoes(context, string, counter){
+      console.log(string.substr(0, counter));
+      var counter = counter;
+      if (counter > string.length-1){
         return;
       } else {
-        this.dominoes(counter);
+        counter = counter + 1;
+        setTimeout(function(){context.dominoes(context, string, counter)}, 1500);
       }
 
     }
