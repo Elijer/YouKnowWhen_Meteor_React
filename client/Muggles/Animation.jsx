@@ -5,18 +5,6 @@ import Animation2 from './Animation2.jsx';
 
 export default class Animation extends TrackerReact(React.Component) {
 
-  constructor(){
-    super();
-
-    this.state = {
-      phase: 'standby'
-    }
-  }
-
-  handleChange(event){
-    console.log('yo');
-  }
-
   componentDidMount(){
     console.log("animation component mounted");
     var outputCanvas = document.getElementById('output'), //final visible canvas
@@ -47,23 +35,31 @@ export default class Animation extends TrackerReact(React.Component) {
     };
 
     interval = setInterval(processFrame, 40);
+    // analyze each frame, get alpha data and apply it to canvas every 40ms
 
 
-// analyze each frame, get alpha data and apply it to canvas every 40ms
+
+    /////////////////////////////////////////
+    ///////////////////////////////////
+    /////////////////////////
+    /////////////////
     video.addEventListener('play', function() {
         clearInterval(interval);
         interval = setInterval(processFrame, 40);
     }, false);
   }
 
+  //'muted' indicator for video tag is CRUCIAL.
+  //Googlechrome will BLOCK AUTOPLAY without this tag.
+  //Or any attempts to do $(#videoID).play()
+  //Which is what I'm using, mostly just so it's apparent that I can call play() whenever I like, which is nice.
+  //Which lowkey, I approve of, even if I wasted wayyy too much time trying to figure this out.
   render(){
-    var phase = this.props.phase;
-    console.log("animationcomponent is rendered");
     return(
       <div>
-        <Animation2 ref = "animationTwoRef" phase = {phase} tonChange={this.handleChange.bind(this)}/>
+        <Animation2 ref = "animationTwoRef"/>
         <div className="offset3" ref = "canvas_output" id="canvas_output">
-          <video ref = "videoRef" id="video" style = {{display: 'none'}} autoPlay loop muted>
+          <video ref = "videoRef" id="video" style = {{display: 'none'}} loop muted>
               <source src="Background_Tall_1.mp4" type='video/mp4' />
           </video>
           <canvas width="1280" height="2048" ref = "buffer" id="buffer" style = {{display: 'none'}}></canvas>
@@ -72,13 +68,4 @@ export default class Animation extends TrackerReact(React.Component) {
       </div>
     )
   }
-
 }
-
-/*      <div className="offset3" ref = "canvas_output" id="canvas_output">
-          <video id="video" style = {{display: 'none'}} autoPlay>
-              <source src="Background_Tall_1.mp4" type='video/mp4; codecs="avc1.42E01E"' />
-          </video>
-          <canvas width="640" height="720" ref = "buffer" id="buffer"></canvas>
-          <canvas width="640" height="360" ref = 'outpot' id="output"></canvas>
-      </div> */
