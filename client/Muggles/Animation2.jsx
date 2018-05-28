@@ -4,14 +4,6 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class Animation2 extends TrackerReact(React.Component) {
 
-  constructor(){
-    super();
-
-    this.state = {
-      placeHolder: 'Web Designer'
-    }
-  }
-
   componentDidMount(){
     var outputCanvas = document.getElementById('output2'), //final visible canvas
     output = outputCanvas.getContext('2d'),
@@ -51,9 +43,10 @@ export default class Animation2 extends TrackerReact(React.Component) {
   }
 
   render(){
+    console.log("animation 2 rendered")
     return(
       <div className="offset4" ref = "canvas_output" id="canvas_output">
-        <video id="video2" style = {{display: 'none'}} autoPlay loop>
+        <video ref = "animationTwoVideoRef" id = "video2" style = {{display: 'none'}} autoPlay loop muted>
             <source src="Try_typing_Tall2.mp4" type='video/mp4' />
         </video>
         <canvas width="1280" height="2048" ref = "buffer2" id="buffer2" style = {{display: 'none'}}></canvas>

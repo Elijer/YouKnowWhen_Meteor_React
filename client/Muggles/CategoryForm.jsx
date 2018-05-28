@@ -19,42 +19,12 @@ export default class CategoryForm extends TrackerReact(React.Component) {
       this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
-    /*context = this;
-    //this.displayPlaceholder(this, 'elijah', 2000, 7000, 2000);
-    var strang = "Web Designer";
-    var strang2 = "Entrepreneur";
-    var delay = 12300;
-    var duration = 1800;
-    var interval = duration/strang.length;
-    var interDuration = 3000;
-    var finalHold = 3000;
-    var interval2 = duration/strang2.length;
-    var firsttime = delay + interval*10+interDuration;
-    ///put this all instead in the componentDidMount whatever thingy, seems like what I should do.
-    setTimeout(function(){context.setState({placeholder: 'W'}) }, delay);
-    setTimeout(function(){context.setState({placeholder: 'We'}) }, delay + interval);*/
-
-    /*for (i = 1; i <= 5; ++i) {
-      setDelay(i);
-    }
-
-    function setDelay(i) {
-      setTimeout(function(){
-        console.log(i);
-      }, 1000);
-    }*/
-
     pholdHelper(context, string, delay, duration, holdTime){
       var delay = 2000;
       var leng = string.length;
       var interval = duration/leng;
       var substring;
       this.dominoes(this, 'string', 0);
-      /*for (var i = 0; i<=leng; i++){
-        subString = string.substr(0, i);
-        //console.log(subString);
-        context.setDelay(subString);
-      }*/
     }
 
     dominoes(context, string, counter){

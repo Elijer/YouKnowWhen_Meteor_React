@@ -18,6 +18,7 @@ export default class Animation extends TrackerReact(React.Component) {
   }
 
   componentDidMount(){
+    console.log("animation component mounted");
     var outputCanvas = document.getElementById('output'), //final visible canvas
     output = outputCanvas.getContext('2d'),
     bufferCanvas = document.getElementById('buffer'),
@@ -57,11 +58,12 @@ export default class Animation extends TrackerReact(React.Component) {
 
   render(){
     var phase = this.props.phase;
+    console.log("animationcomponent is rendered");
     return(
       <div>
-        <Animation2 phase = {phase} tonChange={this.handleChange.bind(this)}/>
+        <Animation2 ref = "animationTwoRef" phase = {phase} tonChange={this.handleChange.bind(this)}/>
         <div className="offset3" ref = "canvas_output" id="canvas_output">
-          <video id="video" style = {{display: 'none'}} autoPlay loop>
+          <video ref = "videoRef" id="video" style = {{display: 'none'}} autoPlay loop muted>
               <source src="Background_Tall_1.mp4" type='video/mp4' />
           </video>
           <canvas width="1280" height="2048" ref = "buffer" id="buffer" style = {{display: 'none'}}></canvas>

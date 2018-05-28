@@ -4,8 +4,6 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import CategoryForm from './CategoryForm.jsx';
 import PhraseForm from './PhraseForm.jsx';
 import Animation from './Animation.jsx';
-//import PhraseSingle from './PhraseSingle.jsx';
-//import PhraseSingleImage from './PhraseSingleImage.jsx';
 import PhraseSingleImage from './PhraseSingleImage.jsx';
 import PhraseSingleNoImage from './PhraseSingleNoImage.jsx';
 import SortDash from './SortingDashboard.jsx';
@@ -22,8 +20,17 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       },
       sortingDashboard: false,
       picsFirst: false,
-      placeHolder: 'Web Designer'
+      placeHolder: '...',
+      videoReady: false
     }
+  }
+
+  componentDidMount(){
+
+    this.setState({videoReady: true});
+    this.refs.animationRef.refs.videoRef.play();
+    this.refs.animationRef.refs.animationTwoRef.refs.animationTwoVideoRef.play();
+    //$('#testvid').play();
   }
 
 /*
@@ -63,11 +70,12 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
   }
 
   render(){
-    var placeHolder = 'Web Designer';
-    //window.localStorage.setItem('test', 'test');
-    //console.log(window.localStorage.getItem('test'));
-    //THIS PART is about displaying the Phraseform
     let userPrompt;
+    var videoReady = this.state.videoReady;
+    var placeHolder = 'Web Designer';
+    window.localStorage.setItem('test', 'testyyah');
+    console.log(window.localStorage.getItem('test'));
+    //THIS PART is about displaying the Phraseform
     Session.set("sortingDashboard", false);
     var currentCat = Session.get("currentCategory");
     var reactiveCat = Session.get("reactiveCategory");
@@ -79,16 +87,9 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
           <PhraseForm setPicsLast = {this.setPicsLast.bind(this)}/>
         </span>)
     } else {
-      phrase = 'Try_typing_Tall2.mp4';
-      //this.initiateOrientation();
-      //this.setState({placeholder: 'Web Designer'});
-      //phrase = 'Idle_Tall.mp4';
-      //phrase = 'Look_Up.mp4'
-      userPrompt = (
-        <Animation phase = 'schmoop'/>
-      )
-      //this.activateVideo(userPrompt);
-      //console.log(userPrompt);
+        userPrompt = (
+          <Animation ref = "animationRef"/>
+        )
     }
 
     //          <img src= 'ykw_Placeholder.png' alt="Profile_Example"/>
@@ -120,7 +121,6 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       }
       else {
         Session.set("sortingDashboard", false);
-        //console.log("none")
         results = (
           <h1>
               <div>Nobody seems to have made any phrases for this category.</div>
@@ -166,27 +166,5 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
         </div>
       </div>
     )
-    //whenever you use brackets like this inside of jsx it's to say "this is javascript"
   }
 }
-//App is the name of the component
-//every react component needs a 'render(){ return()}' function.
-//We need the 'return()' inside the render function so that the render function has output.
-//Everything inside 'return()' needs a single top-level wrapper element
-//So, return (<h1>Hi!</h1><h1>Hi!</h1> ) wouldn't work,
-//but return (<div><h1>Hi!</h1><h1>Hi!</h1></div> would
-/*
-if(Meteor.isClient) {
-  Meteor.startup(function(){
-    ReactDom.render(<App />, document.getElementById("render-target"));
-  });
-}
-
-
-
-
-if something is
-1) going to be used more than once or
-2) is it's own chunk of content, gets big
-then make it a component
-*/
