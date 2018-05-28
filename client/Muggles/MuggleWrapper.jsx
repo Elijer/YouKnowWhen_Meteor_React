@@ -20,17 +20,13 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
       },
       sortingDashboard: false,
       picsFirst: false,
-      placeHolder: '...',
-      videoReady: false
+      placeHolder: '...'
     }
   }
 
   componentDidMount(){
-
-    this.setState({videoReady: true});
     this.refs.animationRef.refs.videoRef.play();
     this.refs.animationRef.refs.animationTwoRef.refs.animationTwoVideoRef.play();
-    //$('#testvid').play();
   }
 
 /*
@@ -71,11 +67,12 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
 
   render(){
     let userPrompt;
-    var videoReady = this.state.videoReady;
     var placeHolder = 'Web Designer';
-    window.localStorage.setItem('test', 'testyyah');
-    console.log(window.localStorage.getItem('test'));
-    //THIS PART is about displaying the Phraseform
+    /////////////////
+    window.localStorage.setItem('cacheTest', 'this string was stored on the local cache');
+    console.log(window.localStorage.getItem('cacheTest'));
+    ////////////////
+    //THIS PART is about displaying the PHRASE form
     Session.set("sortingDashboard", false);
     var currentCat = Session.get("currentCategory");
     var reactiveCat = Session.get("reactiveCategory");
@@ -91,8 +88,6 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
           <Animation ref = "animationRef"/>
         )
     }
-
-    //          <img src= 'ykw_Placeholder.png' alt="Profile_Example"/>
 
     //THIS PART is about displaying the tiles
     if (currentCat && reactiveCat == currentCat){
