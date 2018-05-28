@@ -28,7 +28,7 @@ export default class CategoryForm extends TrackerReact(React.Component) {
     }
 
     dominoes(context, string, counter){
-      console.log(string.substr(0, counter));
+      //console.log(string.substr(0, counter));
       context.setState({placeholder: string.substr(0, counter)})
       var counter = counter;
       if (counter > string.length-1){

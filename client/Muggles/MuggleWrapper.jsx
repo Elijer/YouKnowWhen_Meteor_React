@@ -27,6 +27,11 @@ export default class MuggleWrapper extends TrackerReact(React.Component) {
   componentDidMount(){
     this.refs.animationRef.refs.videoRef.play();
     this.refs.animationRef.refs.animationTwoRef.refs.animationTwoVideoRef.play();
+    let count = 0;
+    setInterval(function(){
+      console.log(count);
+      count++;
+    }, 1000);
   }
 
 /*
